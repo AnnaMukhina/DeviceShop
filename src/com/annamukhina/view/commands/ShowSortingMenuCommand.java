@@ -29,7 +29,7 @@ public class ShowSortingMenuCommand {
         sortingMenu.append("Для завершения работы с системой введите exit\n");
         sortingMenu.append("--------------------------------------------------------\n");
         sortingMenu.append("Сортировка\n");
-        sortingMenu.append("--------------------------------------------------------");
+        sortingMenu.append("--------------------------------------------------------\n");
         sortingMenu.append("Введите цифру, соответствующую объекту сортировки:\n");
         sortingMenu.append("1 - клиенты, 2 - девайсы, 3 - продажи");
     }

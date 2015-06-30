@@ -38,13 +38,13 @@ public class SearchClientCommand implements Command {
         String parameterOfSearch = scanner.next();
 
         switch (parameterOfSearch) {
-            case "0":
+            case "1":
                 int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
                 clientSearchController.findByID(clientID);
 
                 break;
-            case "1":
+            case "2":
                 System.out.println(Constants.surnameInput);
 
                 this.surname = InputReader.getString(scanner);

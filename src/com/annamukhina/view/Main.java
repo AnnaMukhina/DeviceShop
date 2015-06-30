@@ -17,6 +17,8 @@ public class Main {
         Devices devices = new Devices();
         Sales sales = new Sales();
 
+        MainMenu menu = new MainMenu();
+
         MainMenu.showMenu();
 
         CommandParser commandParser = new CommandParser(clients, devices, sales);

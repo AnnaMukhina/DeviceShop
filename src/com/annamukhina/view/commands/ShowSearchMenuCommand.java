@@ -29,7 +29,7 @@ public class ShowSearchMenuCommand implements Command {
         searchMenu.append("Для завершения работы с системой введите exit\n");
         searchMenu.append("--------------------------------------------------------\n");
         searchMenu.append("Поиск\n");
-        searchMenu.append("--------------------------------------------------------");
+        searchMenu.append("--------------------------------------------------------\n");
         searchMenu.append("Введите цифру, соответствующую объекту поиска:\n");
         searchMenu.append("1 - клиенты, 2 - девайсы, 3 - продажи");
     }

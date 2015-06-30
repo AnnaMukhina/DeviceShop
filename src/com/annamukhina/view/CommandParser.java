@@ -3,9 +3,7 @@ package com.annamukhina.view;
 import com.annamukhina.model.storages.Clients;
 import com.annamukhina.model.storages.Devices;
 import com.annamukhina.model.storages.Sales;
-import com.annamukhina.view.commands.AddClientCommand;
-import com.annamukhina.view.commands.AddDeviceCommand;
-import com.annamukhina.view.commands.AddSaleCommand;
+import com.annamukhina.view.commands.*;
 import com.annamukhina.view.exceptions.ExitException;
 
 /**
@@ -23,23 +21,35 @@ public class CommandParser {
     }
 
     public void parseCommand(String command) {
-        //try {
-            switch (command) {
-                case "addc": AddClientCommand addClientCommand= new AddClientCommand(clients);
-                             addClientCommand.execute(); break;
-                case "addd": AddDeviceCommand addDeviceCommand = new AddDeviceCommand(devices);
-                               addDeviceCommand.execute(); break;
-                case "adds": AddSaleCommand addSaleCommand = new AddSaleCommand(clients, devices, sales);
-                             addSaleCommand.execute(); break;
-//                case "search":  break;
-//                case "sort":  break;
-//                case "menu": MainMenu.showMenu(); break;
-//                case "exit": throw new com.annamukhina.view.exceptions.ExitException();
-//                default:
-//                    System.out.println(StringsAndConstants.fail);
-//
-//                    MainMenu.showMenu();
-            }
+        switch (command) {
+            case "client":
+                AddClientCommand addClientCommand= new AddClientCommand(clients);
+                addClientCommand.execute();
+                break;
+            case "device":
+                AddDeviceCommand addDeviceCommand = new AddDeviceCommand(devices);
+                addDeviceCommand.execute();
+                break;
+            case "sale":
+                AddSaleCommand addSaleCommand = new AddSaleCommand(clients, devices, sales);
+                addSaleCommand.execute();
+                break;
+            case "search":
+                ShowSearchMenuCommand showSearchMenuCommand = new ShowSearchMenuCommand(clients, devices, sales);
+                showSearchMenuCommand.execute();
+                break;
+            case "sort":
+                ShowSortingMenuCommand showSortingMenuCommand = new ShowSortingMenuCommand(clients, devices, sales);
+                showSortingMenuCommand.execute();
+                break;
+            case "menu":
+                break;
+            case "exit":
+                break;
+            default:
+                System.out.println(Constants.fail);
 
+                MainMenu.showMenu();
+        }
     }
 }

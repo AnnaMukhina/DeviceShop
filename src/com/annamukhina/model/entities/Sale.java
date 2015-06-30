@@ -39,18 +39,20 @@ public class Sale {
         return id;
     }
 
-    private StringBuilder showOrder() {
+    private String showOrder() {
         StringBuilder output = new StringBuilder();
 
-        for(Device device : order.keySet()) {
-            output.append(device.toString() + "\n");
+        for(Map.Entry<Device, Integer> entry : order.entrySet()) {
+            int number = entry.getValue();
+            for(int i = 0; i < number; i++) {
+                output.append(entry.getKey());
+            }
         }
-        return output;
+        return output.toString();
     }
 
     @Override
     public String toString() {
-        StringBuilder order = showOrder();
-        return id + " " + Constants.format.format(date) + "\n" + client + "\n" + order;
+        return id + " " + Constants.format.format(date) + "\n" + client + "\n" + showOrder();
     }
 }

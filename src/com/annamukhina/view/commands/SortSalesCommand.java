@@ -38,13 +38,13 @@ public class SortSalesCommand implements Command {
 
         switch (parameterOfSort) {
             case "1":
-                salesSortingController.getSortedByID(); break;
+                this.result = salesSortingController.getSortedByID(); break;
             case "2":
-                salesSortingController.getSortedByDate(); break;
+                this.result = salesSortingController.getSortedByDate(); break;
             case "3":
-                salesSortingController.getSortedByOrderSize(); break;
+                this.result = salesSortingController.getSortedByOrderSize(); break;
             case "4":
-                salesSortingController.getSortedByClientID(); break;
+                this.result = salesSortingController.getSortedByClientID(); break;
             case "menu":
                 break;
             case "exit":

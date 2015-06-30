@@ -37,23 +37,23 @@ public class SortClientsCommand implements  Command {
         String parameterOfSort = scanner.next();
 
         switch (parameterOfSort) {
-            case "0":
+            case "1":
                 this.result = clientsSortingController.getSortedByID();
 
                 break;
-            case "1":
+            case "2":
                 this.result = clientsSortingController.getSortedBySurname();
 
                 break;
-            case "2":
+            case "3":
                 this.result = clientsSortingController.getSortedByName();
 
                 break;
-            case "3":
+            case "4":
                 this.result = clientsSortingController.getSortedByMiddleName();
 
                 break;
-            case "4":
+            case "5":
                 this.result = clientsSortingController.getSortedByYearOfBirth();
 
                 break;

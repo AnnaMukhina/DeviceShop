@@ -30,7 +30,7 @@ public class Constants {
 
     public static String brandInput = "Введите номер марки из списка, приведенного ниже:";
 
-    public static String modelInput = "Введите модель устройства в формате: iPhone6:";
+    public static String modelInput = "Введите модель устройства, например, iPhone6:";
 
     public static String typeInput = "Введите номер типа устройства из списка, приведенного ниже:";
 
@@ -42,7 +42,7 @@ public class Constants {
 
     public static String clientIdInput = "ID клиента:";
 
-    public static String orderInput = "Позиции чека в формате: id количество:";
+    public static String orderInput = "Позиции чека (id количество):";
 
     public static String saleAdditionSuccess = "Информация о продаже внесена в систему.";
 

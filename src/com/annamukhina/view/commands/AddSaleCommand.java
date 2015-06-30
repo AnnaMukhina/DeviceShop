@@ -3,6 +3,7 @@ package com.annamukhina.view.commands;
 import com.annamukhina.controller.addition.SaleAdditionController;
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.entities.Device;
+import com.annamukhina.model.operations.comparators.device.DeviceIdComparator;
 import com.annamukhina.model.operations.search.ClientSearcher;
 import com.annamukhina.model.operations.search.DeviceSearcher;
 import com.annamukhina.model.storages.Clients;
@@ -14,6 +15,7 @@ import com.annamukhina.view.InputReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -80,7 +82,7 @@ public class AddSaleCommand implements Command {
     }
 
     private Map<Device, Integer> readOrder() throws IOException {
-        Map<Device, Integer> order = new TreeMap<>();
+        Map<Device, Integer> order = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -91,7 +93,11 @@ public class AddSaleCommand implements Command {
 
             int deviceID = Integer.parseInt(position[0]);
 
+            System.out.println("deviceId" + deviceID);
+
             int number = Integer.parseInt(position[1]);
+
+            System.out.println("number "+ number);
 
             Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID); //TODO check input
 
