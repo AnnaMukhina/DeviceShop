@@ -15,7 +15,6 @@ import com.annamukhina.view.InputReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -26,7 +25,6 @@ import java.util.TreeMap;
 public class AddSaleCommand implements Command {
     private final Clients clients;
     private final Devices devices;
-    private final Sales sales;
     private final SaleAdditionController saleAdditionController;
     private final StringBuilder saleAdditionMenu;
     private final ClientSearcher clientSearcher;
@@ -38,7 +36,6 @@ public class AddSaleCommand implements Command {
         this.devices = devices;
         this.clientSearcher = new ClientSearcher();
         this.deviceSearcher = new DeviceSearcher();
-        this.sales = sales;
         this.saleAdditionController = new SaleAdditionController(sales);
         this.saleAdditionMenu = new StringBuilder();
 
@@ -82,26 +79,25 @@ public class AddSaleCommand implements Command {
     }
 
     private Map<Device, Integer> readOrder() throws IOException {
-        Map<Device, Integer> order = new HashMap<>();
+        Map<Device, Integer> order = new TreeMap<>(new DeviceIdComparator());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String input = reader.readLine();
 
-        while(!reader.readLine().equals("")) {
+        while(!input.equals("")) {
+
             String[] position = input.split(" ");
 
             int deviceID = Integer.parseInt(position[0]);
 
-            System.out.println("deviceId" + deviceID);
-
             int number = Integer.parseInt(position[1]);
-
-            System.out.println("number "+ number);
 
             Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID); //TODO check input
 
             order.put(device, number);
+
+            input = reader.readLine();
         }
         return order;
     }

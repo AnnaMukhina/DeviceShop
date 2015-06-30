@@ -45,7 +45,7 @@ public class Sale {
         for(Map.Entry<Device, Integer> entry : order.entrySet()) {
             int number = entry.getValue();
             for(int i = 0; i < number; i++) {
-                output.append(entry.getKey());
+                output.append(entry.getKey()).append("\n");
             }
         }
         return output.toString();

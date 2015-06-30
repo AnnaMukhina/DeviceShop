@@ -12,13 +12,11 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class SortSalesCommand implements Command {
-    private final Sales sales;
     private final SalesSortingController salesSortingController;
     private final String salesSortingMenu;
     private List<Sale> result;
 
     public SortSalesCommand(Sales sales) {
-        this.sales = sales;
         this.salesSortingController = new SalesSortingController(sales);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -51,6 +49,7 @@ public class SortSalesCommand implements Command {
                 break;
             default:
                 System.out.println(Constants.fail);
+
                 execute();
         }
 
