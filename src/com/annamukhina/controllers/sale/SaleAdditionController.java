@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * @author anna_mukhina
+ *
+ * Controller for sale addition to Sales storage.
  */
 public class SaleAdditionController {
     private final Sales sales;
@@ -17,6 +19,12 @@ public class SaleAdditionController {
         this.sales = sales;
     }
 
+    /**
+     * Calls method for sale addition from Model.
+     *
+     * @param client customer
+     * @param order list of the sold devices and their number
+     */
     public void addSale(Client client, Map<Device, Integer> order) {
         Sale newSale = new Sale(client, order);
 

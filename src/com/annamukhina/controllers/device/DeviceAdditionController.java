@@ -10,6 +10,8 @@ import java.util.Date;
 
 /**
  * @author anna_mukhina
+ *
+ * Controller for device addition to Devices storage.
  */
 public class DeviceAdditionController {
     private final Devices devices;
@@ -24,6 +26,15 @@ public class DeviceAdditionController {
         this.colors = ColorOfDeviceEnum.Color.values();
     }
 
+    /**
+     * Calls method for device addition from Model.
+     *
+     * @param codeOfBrand code of the brand of device in enum
+     * @param model model of the device
+     * @param codeOfType code of the type of device in enum
+     * @param codeOfColor code of the color of device in enum
+     * @param releaseDate date of device release
+     */
     public void addDevice(int codeOfBrand, String model, int codeOfType, int codeOfColor, Date releaseDate) {
         BrandOfDeviceEnum.Brand brand = brands[codeOfBrand];
 
