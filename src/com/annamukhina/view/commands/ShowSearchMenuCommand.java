@@ -15,28 +15,32 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class ShowSearchMenuCommand implements Command {
-    private final StringBuilder searchMenu;
+    private final String searchMenu;
     private final Clients clients;
     private final Devices devices;
     private final Sales sales;
     private final int MAXCODE = 3;
 
     public ShowSearchMenuCommand(Clients clients, Devices devices, Sales sales) {
-        this.searchMenu = new StringBuilder();
         this.clients = clients;
         this.devices = devices;
         this.sales = sales;
 
-        searchMenu.append("\n");
-        searchMenu.append("Для возврата в главное меню введите menu\n");
-        searchMenu.append("Для завершения работы с системой введите exit\n");
-        searchMenu.append("--------------------------------------------------------\n");
-        searchMenu.append("Поиск\n");
-        searchMenu.append("--------------------------------------------------------\n");
-        searchMenu.append("Введите цифру, соответствующую объекту поиска:\n");
-        searchMenu.append("1 - клиенты, 2 - девайсы, 3 - продажи");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\n");
+        stringBuilder.append("Для возврата в главное меню введите menu\n");
+        stringBuilder.append("Для завершения работы с системой введите exit\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Поиск\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Введите цифру, соответствующую объекту поиска:\n");
+        stringBuilder.append("1 - клиенты, 2 - девайсы, 3 - продажи");
+
+        this.searchMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(searchMenu);
 

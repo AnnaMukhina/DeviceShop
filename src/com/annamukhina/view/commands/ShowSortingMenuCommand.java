@@ -14,29 +14,33 @@ import java.util.Scanner;
 /**
  * @author anna_mukhina
  */
-public class ShowSortingMenuCommand {
-    private final StringBuilder sortingMenu;
+public class ShowSortingMenuCommand implements Command {
+    private final String sortingMenu;
     private final Clients clients;
     private final Devices devices;
     private final Sales sales;
     private final int MAXCODE = 3;
 
     public ShowSortingMenuCommand(Clients clients, Devices devices, Sales sales) {
-        this.sortingMenu = new StringBuilder();
         this.clients = clients;
         this.devices = devices;
         this.sales = sales;
 
-        sortingMenu.append("\n");
-        sortingMenu.append("Для возврата в главное меню введите menu\n");
-        sortingMenu.append("Для завершения работы с системой введите exit\n");
-        sortingMenu.append("--------------------------------------------------------\n");
-        sortingMenu.append("Сортировка\n");
-        sortingMenu.append("--------------------------------------------------------\n");
-        sortingMenu.append("Введите цифру, соответствующую объекту сортировки:\n");
-        sortingMenu.append("1 - клиенты, 2 - девайсы, 3 - продажи");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\n");
+        stringBuilder.append("Для возврата в главное меню введите menu\n");
+        stringBuilder.append("Для завершения работы с системой введите exit\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Сортировка\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Введите цифру, соответствующую объекту сортировки:\n");
+        stringBuilder.append("1 - клиенты, 2 - девайсы, 3 - продажи");
+
+        this.sortingMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(sortingMenu);
 

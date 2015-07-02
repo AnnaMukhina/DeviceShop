@@ -16,20 +16,24 @@ import java.util.Scanner;
  */
 public class AddClientCommand implements Command {
     private final ClientAdditionController clientAdditionController;
-    private final StringBuilder clientAdditionMenu;
+    private final String clientAdditionMenu;
 
     public AddClientCommand(Clients clients) {
         this.clientAdditionController = new ClientAdditionController(clients);
-        this.clientAdditionMenu = new StringBuilder();
 
-        clientAdditionMenu.append("\n");
-        clientAdditionMenu.append("Для возврата в главное меню введите menu\n");
-        clientAdditionMenu.append("Для завершения работы с системой введите exit\n");
-        clientAdditionMenu.append("--------------------------------------------------------\n");
-        clientAdditionMenu.append("Внесение в базу нового клиента\n");
-        clientAdditionMenu.append("--------------------------------------------------------");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\n");
+        stringBuilder.append("Для возврата в главное меню введите menu\n");
+        stringBuilder.append("Для завершения работы с системой введите exit\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Внесение в базу нового клиента\n");
+        stringBuilder.append("--------------------------------------------------------");
+
+        this.clientAdditionMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(clientAdditionMenu);
 

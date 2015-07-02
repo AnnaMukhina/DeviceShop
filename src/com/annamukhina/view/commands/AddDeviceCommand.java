@@ -19,20 +19,24 @@ import java.util.Scanner;
  */
 public class AddDeviceCommand implements Command {
     private final DeviceAdditionController deviceAdditionController;
-    private final StringBuilder deviceAdditionMenu;
+    private final String deviceAdditionMenu;
 
     public AddDeviceCommand(Devices devices) {
         this.deviceAdditionController = new DeviceAdditionController(devices);
-        this.deviceAdditionMenu = new StringBuilder();
 
-        deviceAdditionMenu.append("\n");
-        deviceAdditionMenu.append("Для возврата в главное меню введите menu\n");
-        deviceAdditionMenu.append("Для завершения работы с системой введите exit\n");
-        deviceAdditionMenu.append("--------------------------------------------------------\n");
-        deviceAdditionMenu.append("Добавление в ассортимент нового девайса\n");
-        deviceAdditionMenu.append("--------------------------------------------------------");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\n");
+        stringBuilder.append("Для возврата в главное меню введите menu\n");
+        stringBuilder.append("Для завершения работы с системой введите exit\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Добавление в ассортимент нового девайса\n");
+        stringBuilder.append("--------------------------------------------------------");
+
+        this.deviceAdditionMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(deviceAdditionMenu);
 

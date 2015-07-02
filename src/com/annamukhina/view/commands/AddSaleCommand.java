@@ -31,7 +31,7 @@ public class AddSaleCommand implements Command {
     private final Clients clients;
     private final Devices devices;
     private final SaleAdditionController saleAdditionController;
-    private final StringBuilder saleAdditionMenu;
+    private final String saleAdditionMenu;
     private final ClientSearcher clientSearcher;
     private final DeviceSearcher deviceSearcher;
 
@@ -41,16 +41,20 @@ public class AddSaleCommand implements Command {
         this.clientSearcher = new ClientSearcher();
         this.deviceSearcher = new DeviceSearcher();
         this.saleAdditionController = new SaleAdditionController(sales);
-        this.saleAdditionMenu = new StringBuilder();
 
-        saleAdditionMenu.append("\n");
-        saleAdditionMenu.append("Для возврата в главное меню введите menu\n");
-        saleAdditionMenu.append("Для завершения работы с системой введите exit\n");
-        saleAdditionMenu.append("--------------------------------------------------------\n");
-        saleAdditionMenu.append("Оформление продажи\n");
-        saleAdditionMenu.append("--------------------------------------------------------");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\n");
+        stringBuilder.append("Для возврата в главное меню введите menu\n");
+        stringBuilder.append("Для завершения работы с системой введите exit\n");
+        stringBuilder.append("--------------------------------------------------------\n");
+        stringBuilder.append("Оформление продажи\n");
+        stringBuilder.append("--------------------------------------------------------");
+
+        this.saleAdditionMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(saleAdditionMenu);
 
@@ -128,8 +132,8 @@ public class AddSaleCommand implements Command {
         }
     }
 
-    private Device getDevice(int devoceID) throws DeviceNotFoundException {
-        Device device = deviceSearcher.findByID(devices.getDeviceMap(), devoceID);
+    private Device getDevice(int deviceID) throws DeviceNotFoundException {
+        Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID);
         if(device == null) {
             throw new DeviceNotFoundException();
         }

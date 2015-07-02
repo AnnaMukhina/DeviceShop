@@ -31,6 +31,7 @@ public class SearchClientCommand implements Command {
         clientSearchMenu = stringBuilder.toString();
     }
 
+    @Override
     public void execute() {
         System.out.println(clientSearchMenu);
 
