@@ -1,4 +1,4 @@
-package com.annamukhina.controller.search;
+package com.annamukhina.controllers.sale;
 
 import com.annamukhina.model.entities.Sale;
 import com.annamukhina.model.operations.search.SaleSearcher;

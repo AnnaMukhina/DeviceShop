@@ -1,10 +1,12 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.search.ClientSearchController;
+import com.annamukhina.controllers.client.ClientSearchController;
 import com.annamukhina.model.storages.Clients;
 import com.annamukhina.view.Constants;
-import com.annamukhina.view.Helper;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Scanner;
 
@@ -13,14 +15,12 @@ import java.util.Scanner;
  */
 public class SearchClientCommand implements Command {
     private final ClientSearchController clientSearchController;
-    private final Clients clients;
     private final String clientSearchMenu;
     private String surname;
     private String name;
     private String middleName;
 
     public SearchClientCommand(Clients clients) {
-        this.clients = clients;
         this.clientSearchController = new ClientSearchController(clients);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -35,40 +35,41 @@ public class SearchClientCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        String parameterOfSearch = scanner.next();
+        try {
+            int parameterOfSearch = InputReader.getCode(scanner, 2);
 
-        switch (parameterOfSearch) {
-            case "1":
-                int clientID = InputReader.getCode(scanner, Constants.maxClientID);
+            switch (parameterOfSearch) {
+                case 1:
+                    int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
-                clientSearchController.findByID(clientID);
+                    clientSearchController.findByID(clientID);
 
-                break;
-            case "2":
-                System.out.println(Constants.surnameInput);
+                    break;
+                case 2:
+                    System.out.println(Constants.surnameInput);
 
-                this.surname = InputReader.getString(scanner);
+                    this.surname = InputReader.getString(scanner);
 
-                System.out.println(Constants.nameInput);
+                    System.out.println(Constants.nameInput);
 
-                this.name = InputReader.getString(scanner);
+                    this.name = InputReader.getString(scanner);
 
-                System.out.println(Constants.middleNameInput);
+                    System.out.println(Constants.middleNameInput);
 
-                this.middleName = InputReader.getString(scanner);
+                    this.middleName = InputReader.getString(scanner);
 
-                clientSearchController.findByFullName(surname, name, middleName);
+                    clientSearchController.findByFullName(this.surname, this.name, this.middleName);
 
-                break;
-            case "exit":
-                Helper.setActive(false);
+                    break;
+                default:
+                    System.out.println(Constants.fail);
 
-                break;
-            case "menu": break;
-            default:
-                System.out.println(Constants.fail);
-
-                execute();
+                    execute();
+            }
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
         }
     }
 }

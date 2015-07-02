@@ -1,4 +1,4 @@
-package com.annamukhina.controller.sorting;
+package com.annamukhina.controllers.device;
 
 import com.annamukhina.model.entities.Device;
 import com.annamukhina.model.operations.sorting.Sorter;
@@ -11,12 +11,10 @@ import java.util.List;
  * @author anna_mukhina
  */
 public class DevicesSortingController {
-    private final Devices devices;
     private  final Sorter<Device> sorter;
     private final List<Device> deviceList;
 
     public DevicesSortingController(Devices devices) {
-        this.devices = devices;
         this.sorter = new Sorter<>();
         this.deviceList = devices.getDeviceList();
     }

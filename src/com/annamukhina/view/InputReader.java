@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class InputReader {
-    public static String readString(Scanner scanner) {
+    public static String readString(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
             InputChecker.checkString(input);
@@ -21,17 +21,12 @@ public class InputReader {
             return input;
         } catch (StringInputException sie) {
             System.out.println(Constants.wrongInputWarning);
+
             return "wrong";
-        } catch (ExitException ee) {
-            System.exit(0);
-        } catch (GoToMenuException gtme) {
-            MainMenu menu = new MainMenu();
-            menu.showMenu();
         }
-        return "wrong";
     }
 
-    public static Date readDate(Scanner scanner) {
+    public static Date readDate(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
             InputChecker.checkDate(input);
@@ -39,17 +34,12 @@ public class InputReader {
             return Constants.format.parse(input);
         } catch (ParseException e) {
             System.out.println(Constants.wrongDateWarning);
+
             return null;
         }
-        catch (ExitException ee) {
-            System.exit(0);
-        } catch (GoToMenuException gtme) {
-            //MainMenu.showMenu();
-        }
-        return null;
     }
 
-    public static String readModel(Scanner scanner) {
+    public static String readModel(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
             InputChecker.checkModel(input);
@@ -57,51 +47,42 @@ public class InputReader {
             return input;
         } catch (StringInputException sie) {
             System.out.println(Constants.wrongInputWarning);
+
             return "wrong";
-        } catch (ExitException ee) {
-            System.exit(0);
-        } catch (GoToMenuException gtme) {
-           // MainMenu.showMenu();
         }
-        return "wrong";
     }
 
-    public static int readNumber(Scanner scanner, int maxNumber) {
+    public static int readNumber(Scanner scanner, int maxNumber) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
             InputChecker.checkNumber(input, maxNumber);
 
             return Integer.parseInt(input);
-        } catch (GoToMenuException e) {
-           // MainMenu.showMenu();
-        } catch (ExitException e) {
-            System.exit(0);
         } catch (WrongCodeException e) {
             System.out.println(Constants.wrongInputWarning);
+
             return -1;
         } catch (NumberFormatException e) {
             System.out.println(Constants.wrongInputWarning);
+
+            return -1;
         }
-        return -1;
     }
 
-    public static int readYear(Scanner scanner) {
+    public static int readYear(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
             InputChecker.checkYear(input);
+
             return Integer.parseInt(input);
         } catch (StringInputException sie) {
             System.out.println(Constants.wrongInputWarning);
+
             return -1;
-        } catch (ExitException ee) {
-            System.exit(0);
-        } catch (GoToMenuException gtme) {
-           // MainMenu.showMenu();
         }
-        return -1;
     }
 
-    public static int getCode(Scanner scanner, int maxNumber) {
+    public static int getCode(Scanner scanner, int maxNumber) throws ExitException, GoToMenuException {
         int code = readNumber(scanner, maxNumber);
 
         while(code == -1) {
@@ -110,7 +91,7 @@ public class InputReader {
         return code;
     }
 
-    public static Date getDate(Scanner scanner) {
+    public static Date getDate(Scanner scanner) throws ExitException, GoToMenuException {
         Date date = InputReader.readDate(scanner);
 
         while(date == null) {
@@ -119,7 +100,7 @@ public class InputReader {
         return date;
     }
 
-    public static String getModel(Scanner scanner) {
+    public static String getModel(Scanner scanner) throws ExitException, GoToMenuException {
         String input = InputReader.readModel(scanner);
 
         while(input.equals("wrong")) {
@@ -128,7 +109,7 @@ public class InputReader {
         return input;
     }
 
-    public static String getString(Scanner scanner) {
+    public static String getString(Scanner scanner) throws ExitException, GoToMenuException {
         String input = InputReader.readString(scanner);
 
         while(input.equals("wrong")) {
@@ -137,7 +118,7 @@ public class InputReader {
         return input;
     }
 
-    public  static int getYear(Scanner scanner) {
+    public  static int getYear(Scanner scanner) throws ExitException, GoToMenuException {
         int input = InputReader.readYear(scanner);
 
         while(input == -1) {

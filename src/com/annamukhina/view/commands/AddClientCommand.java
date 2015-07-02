@@ -1,9 +1,12 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.addition.ClientAdditionController;
+import com.annamukhina.controllers.client.ClientAdditionController;
 import com.annamukhina.model.storages.Clients;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -12,16 +15,10 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class AddClientCommand implements Command {
-    private final Clients clients;
     private final ClientAdditionController clientAdditionController;
     private final StringBuilder clientAdditionMenu;
-    private String surname;
-    private String name;
-    private String middleName;
-    private Date date;
 
     public AddClientCommand(Clients clients) {
-        this.clients = clients;
         this.clientAdditionController = new ClientAdditionController(clients);
         this.clientAdditionMenu = new StringBuilder();
 
@@ -40,22 +37,28 @@ public class AddClientCommand implements Command {
 
         System.out.println(Constants.surnameInput);
 
-        String surname = InputReader.getString(scanner);
+        try {
+            String surname = InputReader.getString(scanner);
 
-        System.out.println(Constants.nameInput);
+            System.out.println(Constants.nameInput);
 
-        String name = InputReader.getString(scanner);
+            String name = InputReader.getString(scanner);
 
-        System.out.println(Constants.middleNameInput);
+            System.out.println(Constants.middleNameInput);
 
-        String middleName = InputReader.getString(scanner);
+            String middleName = InputReader.getString(scanner);
 
-        System.out.println(Constants.dateInput);
+            System.out.println(Constants.dateInput);
 
-        Date dateOfBirth = InputReader.getDate(scanner);
+            Date dateOfBirth = InputReader.getDate(scanner);
 
-        clientAdditionController.addClient(surname, name, middleName, dateOfBirth);
+            clientAdditionController.addClient(surname, name, middleName, dateOfBirth);
 
-        System.out.println(Constants.clientAdditionSuccess);
+            System.out.println(Constants.clientAdditionSuccess);
+        } catch (GoToMenuException gtme) {
+            MainMenu.showMenu();
+        } catch (ExitException ee) {
+            MainMenu.setActive(false);
+        }
     }
 }

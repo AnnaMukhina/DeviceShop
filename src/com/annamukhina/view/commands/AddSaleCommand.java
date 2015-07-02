@@ -1,6 +1,6 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.addition.SaleAdditionController;
+import com.annamukhina.controllers.sale.SaleAdditionController;
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.entities.Device;
 import com.annamukhina.model.operations.comparators.device.DeviceIdComparator;
@@ -11,6 +11,9 @@ import com.annamukhina.model.storages.Devices;
 import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +32,6 @@ public class AddSaleCommand implements Command {
     private final StringBuilder saleAdditionMenu;
     private final ClientSearcher clientSearcher;
     private final DeviceSearcher deviceSearcher;
-    private final int MAXNUMBER = 5;
 
     public AddSaleCommand(Clients clients, Devices devices, Sales sales) {
         this.clients = clients;
@@ -54,9 +56,10 @@ public class AddSaleCommand implements Command {
 
         System.out.println(Constants.clientIdInput);
 
-        int clientID = InputReader.getCode(scanner, Constants.maxClientID);
+        try {
+            int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
-        Client client = clientSearcher.findByID(clients.getClients(), clientID);
+            Client client = clientSearcher.findByID(clients.getClients(), clientID);
 //            if(client == null) {
 //                throw new ClientNotFoundException();
 //            }
@@ -66,16 +69,18 @@ public class AddSaleCommand implements Command {
 //            AddClientCommand addClientCommand = new AddClientCommand(clients);
 //        }
 
-        System.out.println(Constants.orderInput);
-        try {
+            System.out.println(Constants.orderInput);
+
             Map<Device, Integer> order = readOrder();
 
             saleAdditionController.addSale(client, order);
-
-            System.out.println(Constants.saleAdditionSuccess);
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException ioe) {}
-
     }
 
     private Map<Device, Integer> readOrder() throws IOException {

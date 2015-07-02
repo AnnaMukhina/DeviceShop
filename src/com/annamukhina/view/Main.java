@@ -17,7 +17,7 @@ public class Main {
         Devices devices = new Devices();
         Sales sales = new Sales();
 
-        MainMenu menu = new MainMenu();
+        MainMenu.createMenu();
 
         MainMenu.showMenu();
 
@@ -25,7 +25,7 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        while(Helper.isActive()) {
+        while(MainMenu.isActive()) {
             System.out.println("Введите команду:");
 
             String command = reader.readLine().toLowerCase();

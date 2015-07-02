@@ -1,8 +1,11 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.search.SaleSearchController;
+import com.annamukhina.controllers.sale.SaleSearchController;
 import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Scanner;
 
@@ -10,13 +13,11 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class SearchSaleCommand implements Command {
-    private final Sales sales;
     private final SaleSearchController saleSearchController;
     private final String MESSAGE = "Введите год продажи:";
     private int year;
 
     public SearchSaleCommand(Sales sales) {
-        this.sales = sales;
         this.saleSearchController = new SaleSearchController(sales);
     }
 
@@ -26,8 +27,14 @@ public class SearchSaleCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        this.year = InputReader.getYear(scanner);
+        try {
+            this.year = InputReader.getYear(scanner);
 
-        saleSearchController.findByYear(year);
+            saleSearchController.findByYear(year);
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
+        }
     }
 }

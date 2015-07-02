@@ -1,4 +1,4 @@
-package com.annamukhina.controller.sorting;
+package com.annamukhina.controllers.client;
 
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.operations.sorting.Sorter;
@@ -11,12 +11,10 @@ import java.util.List;
  * @author anna_mukhina
  */
 public class ClientsSortingController {
-    private final Clients clients;
     private final Sorter<Client> sorter;
     private final List<Client> clientList;
 
     public ClientsSortingController(Clients clients) {
-        this.clients = clients;
         this.sorter = new Sorter<>();
         this.clientList = clients.getClientList();
     }

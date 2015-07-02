@@ -1,4 +1,4 @@
-package com.annamukhina.controller.search;
+package com.annamukhina.controllers.client;
 
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.operations.search.ClientSearcher;
@@ -13,13 +13,11 @@ import java.util.Map;
 public class ClientSearchController {
     private final Clients clients;
     private final ClientSearcher clientSearcher;
-    private final List<Client> clientList;
     private final Map<Integer, Client> clientMap;
 
     public ClientSearchController(Clients clients) {
         this.clients = clients;
         this.clientSearcher = new ClientSearcher();
-        this.clientList = clients.getClientList();
         this.clientMap = clients.getClients();
     }
 

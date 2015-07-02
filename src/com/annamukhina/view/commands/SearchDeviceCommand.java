@@ -1,13 +1,14 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.search.DeviceSearchController;
+import com.annamukhina.controllers.device.DeviceSearchController;
 import com.annamukhina.model.enums.BrandOfDeviceEnum;
 import com.annamukhina.model.enums.TypeOfDeviceEnum;
 import com.annamukhina.model.storages.Devices;
 import com.annamukhina.view.Constants;
-import com.annamukhina.view.Helper;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
 import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Scanner;
 
@@ -15,14 +16,12 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class SearchDeviceCommand implements Command {
-    private final Devices devices;
     private final DeviceSearchController deviceSearchController;
     private final String deviceSearchMenu;
     private int code;
     private int releaseYear;
 
     public SearchDeviceCommand(Devices devices) {
-        this.devices = devices;
         this.deviceSearchController = new DeviceSearchController(devices);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -39,53 +38,54 @@ public class SearchDeviceCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        String parameterOfSearch = scanner.next();
-        switch (parameterOfSearch) {
-            case "1":
-                System.out.println(Constants.deviceIdInput);
+        try {
+            int parameterOfSearch = InputReader.getCode(scanner, 4);
+            switch (parameterOfSearch) {
+                case 1:
+                    System.out.println(Constants.deviceIdInput);
 
-                this.code = InputReader.getCode(scanner, Constants.maxDeviceID);
+                    this.code = InputReader.getCode(scanner, Constants.maxDeviceID);
 
-                deviceSearchController.findByID(code);
+                    deviceSearchController.findByID(code);
 
-                break;
-            case "2":
-                System.out.println(Constants.brandInput);
+                    break;
+                case 2:
+                    System.out.println(Constants.brandInput);
 
-                BrandOfDeviceEnum.printBrands();
+                    BrandOfDeviceEnum.printBrands();
 
-                this.code = InputReader.getCode(scanner, Constants.maxCodeOfBrand);
+                    this.code = InputReader.getCode(scanner, Constants.maxCodeOfBrand);
 
-                deviceSearchController.findByBrand(code);
+                    deviceSearchController.findByBrand(code);
 
-                break;
-            case "3":
-                System.out.println(Constants.typeInput);
+                    break;
+                case 3:
+                    System.out.println(Constants.typeInput);
 
-                TypeOfDeviceEnum.printTypes();
+                    TypeOfDeviceEnum.printTypes();
 
-                this.code = InputReader.getCode(scanner, Constants.maxCodeOfType);
+                    this.code = InputReader.getCode(scanner, Constants.maxCodeOfType);
 
-                deviceSearchController.findByType(code);
+                    deviceSearchController.findByType(code);
 
-                break;
-            case "4":
-                System.out.println(Constants.deviceReleaseYearInput);
+                    break;
+                case 4:
+                    System.out.println(Constants.deviceReleaseYearInput);
 
-                this.releaseYear = InputReader.getYear(scanner);
+                    this.releaseYear = InputReader.getYear(scanner);
 
-                deviceSearchController.findByReleaseYear(releaseYear);
+                    deviceSearchController.findByReleaseYear(releaseYear);
 
-                break;
-            case "exit":
-                try {
-                    throw new ExitException();
-                } catch (ExitException ee) {
-                    Helper.setActive(false);
-                }
-            default:
-                System.out.println(Constants.fail);
-                execute();
+                    break;
+                default:
+                    System.out.println(Constants.fail);
+
+                    execute();
+            }
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
         }
     }
 }

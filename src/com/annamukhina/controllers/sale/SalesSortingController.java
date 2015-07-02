@@ -1,4 +1,4 @@
-package com.annamukhina.controller.sorting;
+package com.annamukhina.controllers.sale;
 
 import com.annamukhina.model.entities.Sale;
 import com.annamukhina.model.operations.comparators.sale.OrderSizeComparator;
@@ -14,12 +14,10 @@ import java.util.List;
  * @author anna_mukhina
  */
 public class SalesSortingController {
-    private final Sales sales;
     private final Sorter<Sale> sorter;
     private final List<Sale> saleList;
 
     public SalesSortingController(Sales sales) {
-        this.sales = sales;
         this.sorter = new Sorter<>();
         this.saleList = sales.getSalesList();
     }

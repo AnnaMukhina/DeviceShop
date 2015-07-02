@@ -1,9 +1,13 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.sorting.SalesSortingController;
+import com.annamukhina.controllers.sale.SalesSortingController;
 import com.annamukhina.model.entities.Sale;
 import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
+import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -32,29 +36,30 @@ public class SortSalesCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        String parameterOfSort = scanner.next();
+        try {
+            int parameterOfSort = InputReader.getCode(scanner, 4);
 
-        switch (parameterOfSort) {
-            case "1":
-                this.result = salesSortingController.getSortedByID(); break;
-            case "2":
-                this.result = salesSortingController.getSortedByDate(); break;
-            case "3":
-                this.result = salesSortingController.getSortedByOrderSize(); break;
-            case "4":
-                this.result = salesSortingController.getSortedByClientID(); break;
-            case "menu":
-                break;
-            case "exit":
-                break;
-            default:
-                System.out.println(Constants.fail);
+            switch (parameterOfSort) {
+                case 1:
+                    this.result = salesSortingController.getSortedByID(); break;
+                case 2:
+                    this.result = salesSortingController.getSortedByDate(); break;
+                case 3:
+                    this.result = salesSortingController.getSortedByOrderSize(); break;
+                case 4:
+                    this.result = salesSortingController.getSortedByClientID(); break;
+                default:
+                    System.out.println(Constants.fail);
 
-                execute();
+                    execute();
+            }
+            PrintCommand<Sale> printCommand = new PrintCommand<>(result);
+
+            printCommand.execute();
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
         }
-
-        PrintCommand<Sale> printCommand = new PrintCommand<>(result);
-
-        printCommand.execute();
     }
 }

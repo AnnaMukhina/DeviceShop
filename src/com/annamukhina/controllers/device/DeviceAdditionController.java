@@ -1,4 +1,4 @@
-package com.annamukhina.controller.addition;
+package com.annamukhina.controllers.device;
 
 import com.annamukhina.model.entities.Device;
 import com.annamukhina.model.enums.BrandOfDeviceEnum;

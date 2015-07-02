@@ -1,12 +1,15 @@
 package com.annamukhina.view.commands;
 
-import com.annamukhina.controller.addition.DeviceAdditionController;
+import com.annamukhina.controllers.device.DeviceAdditionController;
 import com.annamukhina.model.enums.BrandOfDeviceEnum;
 import com.annamukhina.model.enums.ColorOfDeviceEnum;
 import com.annamukhina.model.enums.TypeOfDeviceEnum;
 import com.annamukhina.model.storages.Devices;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -15,12 +18,10 @@ import java.util.Scanner;
  * @author anna_mukhina
  */
 public class AddDeviceCommand implements Command {
-    private final Devices devices;
     private final DeviceAdditionController deviceAdditionController;
     private final StringBuilder deviceAdditionMenu;
 
     public AddDeviceCommand(Devices devices) {
-        this.devices = devices;
         this.deviceAdditionController = new DeviceAdditionController(devices);
         this.deviceAdditionMenu = new StringBuilder();
 
@@ -41,30 +42,36 @@ public class AddDeviceCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        int codeOfBrand = InputReader.getCode(scanner, Constants.maxCodeOfBrand);
+        try {
+            int codeOfBrand = InputReader.getCode(scanner, Constants.maxCodeOfBrand);
 
-        System.out.println(Constants.modelInput);
+            System.out.println(Constants.modelInput);
 
-        String model = InputReader.getModel(scanner);
+            String model = InputReader.getModel(scanner);
 
-        System.out.println(Constants.typeInput);
+            System.out.println(Constants.typeInput);
 
-        TypeOfDeviceEnum.printTypes();
+            TypeOfDeviceEnum.printTypes();
 
-        int codeOfType = InputReader.getCode(scanner, Constants.maxCodeOfType);
+            int codeOfType = InputReader.getCode(scanner, Constants.maxCodeOfType);
 
-        System.out.println(Constants.colorInput);
+            System.out.println(Constants.colorInput);
 
-        ColorOfDeviceEnum.printColors();
+            ColorOfDeviceEnum.printColors();
 
-        int codeOfColor = InputReader.getCode(scanner, Constants.maxCodeOfColor);
+            int codeOfColor = InputReader.getCode(scanner, Constants.maxCodeOfColor);
 
-        System.out.println(Constants.releaseDateInput);
+            System.out.println(Constants.releaseDateInput);
 
-        Date releaseDate = InputReader.getDate(scanner);
+            Date releaseDate = InputReader.getDate(scanner);
 
-        deviceAdditionController.addDevice(codeOfBrand, model, codeOfType, codeOfColor, releaseDate);
+            deviceAdditionController.addDevice(codeOfBrand, model, codeOfType, codeOfColor, releaseDate);
 
-        System.out.println(Constants.deviceAdditionSuccess);
+            System.out.println(Constants.deviceAdditionSuccess);
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
+        }
     }
 }

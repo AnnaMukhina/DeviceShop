@@ -1,4 +1,4 @@
-package com.annamukhina.controller.addition;
+package com.annamukhina.controllers.client;
 
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.storages.Clients;

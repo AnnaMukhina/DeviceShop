@@ -5,6 +5,9 @@ import com.annamukhina.model.storages.Devices;
 import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Scanner;
 
@@ -39,31 +42,37 @@ public class ShowSortingMenuCommand {
 
         Scanner scanner = new Scanner(System.in);
 
-        int code = InputReader.readNumber(scanner, MAXCODE);
+        try {
+            int code = InputReader.readNumber(scanner, MAXCODE);
 
-        switch (code) {
-            case 1:
-                SortClientsCommand sortClientsCommand = new SortClientsCommand(clients);
+            switch (code) {
+                case 1:
+                    SortClientsCommand sortClientsCommand = new SortClientsCommand(clients);
 
-                sortClientsCommand.execute();
+                    sortClientsCommand.execute();
 
-                break;
-            case 2:
-                SortDevicesCommand sortDevicesCommand = new SortDevicesCommand(devices);
+                    break;
+                case 2:
+                    SortDevicesCommand sortDevicesCommand = new SortDevicesCommand(devices);
 
-                sortDevicesCommand.execute();
+                    sortDevicesCommand.execute();
 
-                break;
-            case 3:
-                SortSalesCommand sortSalesCommand = new SortSalesCommand(sales);
+                    break;
+                case 3:
+                    SortSalesCommand sortSalesCommand = new SortSalesCommand(sales);
 
-                sortSalesCommand.execute();
+                    sortSalesCommand.execute();
 
-                break;
-            default:
-                System.out.println(Constants.fail);
+                    break;
+                default:
+                    System.out.println(Constants.fail);
 
-                execute();
+                    execute();
+            }
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
         }
     }
 }

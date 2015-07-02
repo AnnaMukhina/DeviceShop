@@ -5,6 +5,9 @@ import com.annamukhina.model.storages.Devices;
 import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
+import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ExitException;
+import com.annamukhina.view.exceptions.GoToMenuException;
 
 import java.util.Scanner;
 
@@ -39,31 +42,37 @@ public class ShowSearchMenuCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
-        int code = InputReader.readNumber(scanner, MAXCODE);
+        try {
+            int code = InputReader.readNumber(scanner, MAXCODE);
 
-        switch (code) {
-            case 1:
-                SearchClientCommand searchClientCommand = new SearchClientCommand(clients);
+            switch (code) {
+                case 1:
+                    SearchClientCommand searchClientCommand = new SearchClientCommand(clients);
 
-                searchClientCommand.execute();
+                    searchClientCommand.execute();
 
-                break;
-            case 2:
-                SearchDeviceCommand searchDeviceCommand = new SearchDeviceCommand(devices);
+                    break;
+                case 2:
+                    SearchDeviceCommand searchDeviceCommand = new SearchDeviceCommand(devices);
 
-                searchDeviceCommand.execute();
+                    searchDeviceCommand.execute();
 
-                break;
-            case 3:
-                SearchSaleCommand searchSaleCommand = new SearchSaleCommand(sales);
+                    break;
+                case 3:
+                    SearchSaleCommand searchSaleCommand = new SearchSaleCommand(sales);
 
-                searchSaleCommand.execute();
+                    searchSaleCommand.execute();
 
-                break;
-            default:
-                System.out.println(Constants.fail);
+                    break;
+                default:
+                    System.out.println(Constants.fail);
 
-                execute();
+                    execute();
+            }
+        } catch (GoToMenuException e) {
+            MainMenu.showMenu();
+        } catch (ExitException e) {
+            MainMenu.setActive(false);
         }
     }
 }

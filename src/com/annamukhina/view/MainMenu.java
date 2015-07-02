@@ -5,8 +5,9 @@ package com.annamukhina.view;
  */
 public class MainMenu {
     private static String menu;
+    private static boolean active = true;
 
-    public MainMenu() {
+    public static void createMenu() {
         StringBuilder stringBuilder  = new StringBuilder();
 
         stringBuilder.append("Вы находитесь в главном меню\n");
@@ -20,10 +21,18 @@ public class MainMenu {
         stringBuilder.append("exit       завершение работы с системой\n");
         stringBuilder.append("--------------------------------------------------------");
 
-        this.menu = stringBuilder.toString();
+        menu = stringBuilder.toString();
     }
 
     public static void showMenu() {
         System.out.println(menu);
+    }
+
+    public static boolean isActive() {
+        return active;
+    }
+
+    public static void setActive(boolean active) {
+        MainMenu.active = active;
     }
 }
