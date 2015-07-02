@@ -49,15 +49,13 @@ public class CommandParser {
                     throw new GoToMenuException();
                 case EXIT:
                     throw new ExitException();
-                default:
-                    System.out.println(Constants.fail);
-
-                    MainMenu.showMenu();
             }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();
         } catch (ExitException e) {
             MainMenu.setActive(false);
+        } catch (IllegalArgumentException iae) {
+            System.out.println(Constants.FAIL);
         }
     }
 }

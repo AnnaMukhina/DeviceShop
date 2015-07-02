@@ -43,9 +43,9 @@ public class ShowSortingMenuCommand {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int code = InputReader.readNumber(scanner, MAXCODE);
+            int code = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[code]) {
+            switch (Constants.CODES[code]) {
                 case ONE:
                     SortClientsCommand sortClientsCommand = new SortClientsCommand(clients);
 
@@ -64,10 +64,6 @@ public class ShowSortingMenuCommand {
                     sortSalesCommand.execute();
 
                     break;
-                default:
-                    System.out.println(Constants.fail);
-
-                    execute();
             }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();

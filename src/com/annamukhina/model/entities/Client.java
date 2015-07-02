@@ -46,6 +46,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return id + " " + surname + " " + name + " " + middleName + " " + Constants.format.format(dateOfBirth);
+        return id + " " + surname + " " + name + " " + middleName + " " + Constants.FORMAT.format(dateOfBirth);
     }
 }

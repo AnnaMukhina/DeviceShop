@@ -53,6 +53,7 @@ public class Sale {
 
     @Override
     public String toString() {
-        return id + " " + Constants.format.format(date) + "\n" + client + "\n" + showOrder();
+        return id + " " + Constants.FORMAT.format(date) + "\n" + client + "\n" + showOrder() + "\n" +
+                "--------------------------------------------------------";
     }
 }

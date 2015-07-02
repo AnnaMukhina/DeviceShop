@@ -40,7 +40,7 @@ public class SortClientsCommand implements  Command {
         try {
             int parameterOfSort = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[parameterOfSort]) {
+            switch (Constants.CODES[parameterOfSort]) {
                 case ONE:
                     this.result = clientsSortingController.getSortedByID();
 
@@ -61,10 +61,6 @@ public class SortClientsCommand implements  Command {
                     this.result = clientsSortingController.getSortedByYearOfBirth();
 
                     break;
-                default:
-                    System.out.println(Constants.fail);
-
-                    execute();
             }
             PrintCommand<Client> printCommand = new PrintCommand<>(result);
 

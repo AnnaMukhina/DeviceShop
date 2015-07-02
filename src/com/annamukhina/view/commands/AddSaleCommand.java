@@ -12,6 +12,8 @@ import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
 import com.annamukhina.view.MainMenu;
+import com.annamukhina.view.exceptions.ClientNotFoundException;
+import com.annamukhina.view.exceptions.DeviceNotFoundException;
 import com.annamukhina.view.exceptions.ExitException;
 import com.annamukhina.view.exceptions.GoToMenuException;
 
@@ -59,27 +61,27 @@ public class AddSaleCommand implements Command {
         try {
             int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
-            Client client = clientSearcher.findByID(clients.getClients(), clientID);
-//            if(client == null) {
-//                throw new ClientNotFoundException();
-//            }
-//        }
-//        catch (ClientNotFoundException cnfe) {
-//            System.out.println("Клиент с таким id не существует. Внесите его в систему.");
-//            AddClientCommand addClientCommand = new AddClientCommand(clients);
-//        }
+            Client client = getClient(clientID);
 
             System.out.println(Constants.orderInput);
 
             Map<Device, Integer> order = readOrder();
 
             saleAdditionController.addSale(client, order);
+
+            System.out.println(Constants.saleAdditionSuccess);
         } catch (GoToMenuException e) {
             MainMenu.showMenu();
         } catch (ExitException e) {
             MainMenu.setActive(false);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClientNotFoundException cnfe) {
+            System.out.println("Клиент с таким id не существует. Внесите его в систему.");
+
+            AddClientCommand addClientCommand = new AddClientCommand(clients);
+
+            addClientCommand.execute();
         }
     }
 
@@ -90,7 +92,7 @@ public class AddSaleCommand implements Command {
 
         String input = reader.readLine();
 
-        while(!input.equals("")) {
+        while(!input.equals("-")) {
 
             String[] position = input.split(" ");
 
@@ -98,12 +100,39 @@ public class AddSaleCommand implements Command {
 
             int number = Integer.parseInt(position[1]);
 
-            Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID); //TODO check input
+            try {
+                Device device = getDevice(deviceID);
 
-            order.put(device, number);
+                order.put(device, number);
 
-            input = reader.readLine();
+                input = reader.readLine();
+
+            } catch (DeviceNotFoundException dnfe) {
+                System.out.println("Девайс с таким id не существует.");
+
+                input = reader.readLine();
+            }
         }
         return order;
+    }
+
+    private Client getClient(int clientID) throws ClientNotFoundException {
+        Client client = clientSearcher.findByID(clients.getClients(), clientID);
+        if(client == null) {
+            throw new ClientNotFoundException();
+        }
+        else {
+            return client;
+        }
+    }
+
+    private Device getDevice(int devoceID) throws DeviceNotFoundException {
+        Device device = deviceSearcher.findByID(devices.getDeviceMap(), devoceID);
+        if(device == null) {
+            throw new DeviceNotFoundException();
+        }
+        else {
+            return device;
+        }
     }
 }

@@ -40,7 +40,7 @@ public class SortDevicesCommand implements Command {
         try {
             int parameterOfSort = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[parameterOfSort]) {
+            switch (Constants.CODES[parameterOfSort]) {
                 case ONE:
                     this.result = devicesSortingController.getSortedByID();
                     break;
@@ -59,9 +59,6 @@ public class SortDevicesCommand implements Command {
                 case SIX:
                     this.result = devicesSortingController.getSortedByModel();
                     break;
-                default:
-                    System.out.println(Constants.fail);
-                    execute();
             }
             PrintCommand<Device> printCommand = new PrintCommand<>(result);
 

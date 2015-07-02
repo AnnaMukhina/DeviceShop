@@ -39,7 +39,7 @@ public class SearchClientCommand implements Command {
         try {
             int parameterOfSearch = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[parameterOfSearch]) {
+            switch (Constants.CODES[parameterOfSearch]) {
                 case ONE:
                     int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
@@ -62,10 +62,6 @@ public class SearchClientCommand implements Command {
                     clientSearchController.findByFullName(this.surname, this.name, this.middleName);
 
                     break;
-                default:
-                    System.out.println(Constants.fail);
-
-                    execute();
             }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();

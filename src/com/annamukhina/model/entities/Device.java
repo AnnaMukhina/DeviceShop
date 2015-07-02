@@ -57,6 +57,6 @@ public class Device {
     @Override
     public String toString() {
         return id + " " + brand.name() + " " + model + " " + type.name() + " "
-                + color.name() + " " + Constants.format.format(releaseDate);
+                + color.name() + " " + Constants.FORMAT.format(releaseDate);
     }
 }

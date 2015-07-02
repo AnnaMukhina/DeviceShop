@@ -25,7 +25,7 @@ public class Timer {
 
     public void addClients(int number) throws ParseException {
         Long t1 = System.currentTimeMillis();
-        Date date = Constants.format.parse("01.01.1111");
+        Date date = Constants.FORMAT.parse("01.01.1111");
         for(int i = 0; i < number; i++) {
             String tmp = "client"+i;
             Client client = new Client(tmp, tmp, tmp, date);

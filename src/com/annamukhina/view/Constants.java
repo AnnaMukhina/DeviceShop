@@ -10,7 +10,9 @@ import java.text.SimpleDateFormat;
  * @author anna_mukhina
  */
 public class Constants {
-    public static final SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+    public static final String MESSAGE = "Введите команду:";
+
+    public static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 
     public static final String surnameInput = "Фамилия:";
 
@@ -42,7 +44,7 @@ public class Constants {
 
     public static String clientIdInput = "ID клиента:";
 
-    public static String orderInput = "Позиции чека (id количество):";
+    public static String orderInput = "Для окончания ввода нажмите -. \nПозиции чека (id количество):";
 
     public static String saleAdditionSuccess = "Информация о продаже внесена в систему.";
 
@@ -54,7 +56,7 @@ public class Constants {
 
     public static final String deviceReleaseYearInput = "Введите год выпуска девайса:";
 
-    public static final String fail = "Неверный ввод команды, попробуйте снова.";
+    public static final String FAIL = "Неверный ввод команды, попробуйте снова.";
 
     public static final int maxClientID = 1000000000;
 
@@ -68,7 +70,5 @@ public class Constants {
         ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE
     }
 
-    public static Code[] codes = Code.values();
-
-    public static Command[] commands = Command.values();
+    public static Code[] CODES = Code.values();
 }

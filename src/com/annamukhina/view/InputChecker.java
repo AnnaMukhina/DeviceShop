@@ -13,17 +13,17 @@ import java.util.regex.Pattern;
  * @author anna_mukhina
  */
 public class InputChecker {
-    private static final Pattern stringPattern = Pattern.compile("[A-Za-zA-Яа-я]+");
+    private static final Pattern stringPattern = Pattern.compile("[A-Za-zA-Яа-я' -]+");
     private static final Pattern modelPattern = Pattern.compile("\\w+");
     private static final Pattern yearPattern = Pattern.compile("[0-9]{4}");
-    private static final String exit = "exit";
-    private static final String menu = "menu";
+    private static final String EXIT = "EXIT";
+    private static final String MENU = "MENU";
 
     public static void checkDate(String input) throws GoToMenuException, ExitException, ParseException {
         switch (input) {
-            case exit:
+            case EXIT:
                 throw new ExitException();
-            case menu:
+            case MENU:
                 throw new GoToMenuException();
         }
     }
@@ -34,10 +34,10 @@ public class InputChecker {
         if (!matches) {
             throw new StringInputException();
         }
-        if(input.equals(exit)) {
+        if(input.equals(EXIT)) {
             throw new ExitException();
         }
-        else if(input.equals(menu)) {
+        else if(input.equals(MENU)) {
             throw new GoToMenuException();
         }
     }
@@ -48,19 +48,19 @@ public class InputChecker {
         if (!matches) {
             throw new StringInputException();
         }
-        if(input.equals(exit)) {
+        if(input.equals(EXIT)) {
             throw new ExitException();
         }
-        else if(input.equals(menu)) {
+        else if(input.equals(MENU)) {
             throw new GoToMenuException();
         }
     }
 
     public static void checkNumber(String input, int maxNumber) throws ExitException, GoToMenuException, WrongCodeException {
         switch (input) {
-            case exit:
+            case EXIT:
                 throw new ExitException();
-            case menu:
+            case MENU:
                 throw new GoToMenuException();
             default:
                 int code = Integer.parseInt(input);
@@ -74,9 +74,9 @@ public class InputChecker {
 
     public static void checkYear(String input) throws ExitException, GoToMenuException, StringInputException {
         switch (input) {
-            case exit:
+            case EXIT:
                 throw new ExitException();
-            case menu:
+            case MENU:
                 throw new GoToMenuException();
             default:
                 Matcher matcher = yearPattern.matcher(input);

@@ -42,7 +42,7 @@ public class SearchDeviceCommand implements Command {
         try {
             int parameterOfSearch = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[parameterOfSearch]) {
+            switch (Constants.CODES[parameterOfSearch]) {
                 case ONE:
                     System.out.println(Constants.deviceIdInput);
 
@@ -79,10 +79,6 @@ public class SearchDeviceCommand implements Command {
                     deviceSearchController.findByReleaseYear(releaseYear);
 
                     break;
-                default:
-                    System.out.println(Constants.fail);
-
-                    execute();
             }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();

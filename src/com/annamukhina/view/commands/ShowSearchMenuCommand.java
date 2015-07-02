@@ -43,9 +43,9 @@ public class ShowSearchMenuCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int code = InputReader.readNumber(scanner, MAXCODE);
+            int code = InputReader.getCode(scanner, MAXCODE);
 
-            switch (Constants.codes[code]) {
+            switch (Constants.CODES[code]) {
                 case ONE:
                     SearchClientCommand searchClientCommand = new SearchClientCommand(clients);
 
@@ -64,10 +64,6 @@ public class ShowSearchMenuCommand implements Command {
                     searchSaleCommand.execute();
 
                     break;
-                default:
-                    System.out.println(Constants.fail);
-
-                    execute();
             }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();

@@ -22,7 +22,7 @@ public class InputReader {
         } catch (StringInputException sie) {
             System.out.println(Constants.wrongInputWarning);
 
-            return "wrong";
+            return "error";
         }
     }
 
@@ -31,7 +31,7 @@ public class InputReader {
         try {
             InputChecker.checkDate(input);
 
-            return Constants.format.parse(input);
+            return Constants.FORMAT.parse(input);
         } catch (ParseException e) {
             System.out.println(Constants.wrongDateWarning);
 
@@ -48,7 +48,7 @@ public class InputReader {
         } catch (StringInputException sie) {
             System.out.println(Constants.wrongInputWarning);
 
-            return "wrong";
+            return "error";
         }
     }
 
@@ -92,37 +92,37 @@ public class InputReader {
     }
 
     public static Date getDate(Scanner scanner) throws ExitException, GoToMenuException {
-        Date date = InputReader.readDate(scanner);
+        Date date = readDate(scanner);
 
         while(date == null) {
-            date = InputReader.readDate(scanner);
+            date = readDate(scanner);
         }
         return date;
     }
 
     public static String getModel(Scanner scanner) throws ExitException, GoToMenuException {
-        String input = InputReader.readModel(scanner);
+        String input = readModel(scanner);
 
-        while(input.equals("wrong")) {
-            input = InputReader.readModel(scanner);
+        while(input.equals("error")) {
+            input = readModel(scanner);
         }
         return input;
     }
 
     public static String getString(Scanner scanner) throws ExitException, GoToMenuException {
-        String input = InputReader.readString(scanner);
+        String input = readString(scanner);
 
-        while(input.equals("wrong")) {
-            input = InputReader.readModel(scanner);
+        while(input.equals("error")) {
+            input = readModel(scanner);
         }
         return input;
     }
 
     public  static int getYear(Scanner scanner) throws ExitException, GoToMenuException {
-        int input = InputReader.readYear(scanner);
+        int input = readYear(scanner);
 
         while(input == -1) {
-            input = InputReader.readYear(scanner);
+            input = readYear(scanner);
         }
         return input;
     }
