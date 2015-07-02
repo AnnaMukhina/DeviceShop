@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author anna_mukhina
  *
- * Controller for client search.
+ * Controller for search of the clients.
  */
 public class ClientSearchController {
     private final Clients clients;
@@ -24,7 +24,7 @@ public class ClientSearchController {
     }
 
     /**
-     * Calls method for client search by surname, name and middle name from Model.
+     * Calls method for search of the clients by surname, name and middle name from Model.
      * Returns a Client object with specified parameters or null, if this client
      * doesn't exist.
      *
@@ -39,7 +39,7 @@ public class ClientSearchController {
     }
 
     /**
-     * Calls method for client search by id from Model.
+     * Calls method for search of the clients by id from Model.
      * Returns a Client object with specified parameter or null, if this client
      * doesn't exist.
      *

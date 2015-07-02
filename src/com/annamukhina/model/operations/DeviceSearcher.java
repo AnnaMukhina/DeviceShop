@@ -8,8 +8,19 @@ import java.util.*;
 
 /**
  * @author anna_mukhina
+ *
+ * Contains methods for the search of the devices.
  */
 public class DeviceSearcher extends SearcherByID<Device> {
+    /**
+     * Searches for the devices by code of the brand.
+     * Returns a list of the Device objects with specified parameter.
+     * If there are no devices with this brand returns an empty list.
+     *
+     * @param brand brand of the device code in enum
+     * @param devices list of values of the map-storage
+     * @return list of the Device objects with this brand
+     */
     public List<Device> findByBrand(int brand, List<Device> devices) {
         BrandOfDeviceEnum.Brand brands[] = BrandOfDeviceEnum.Brand.values();
 
@@ -22,7 +33,15 @@ public class DeviceSearcher extends SearcherByID<Device> {
         }
         return found;
     }
-
+    /**
+     * Searches for the devices by code of the type.
+     * Returns a list of the Device objects with specified parameter.
+     * If there are no devices with this type returns an empty list.
+     *
+     * @param type type of the device code in enum
+     * @param devices list of values of the map-storage
+     * @return list of the Device objects with this type
+     */
     public List<Device> findByType(int type, List<Device> devices) {
         TypeOfDeviceEnum.Type types[] = TypeOfDeviceEnum.Type.values();
 
@@ -35,14 +54,22 @@ public class DeviceSearcher extends SearcherByID<Device> {
         }
         return found;
     }
-
-    public List<Device> findByReleaseYear(int desiredYear, List<Device> devices) {
+    /**
+     * Searches for the devices by release year.
+     * Returns a list of the Device objects with specified parameter.
+     * If there are no devices with this release year returns an empty list.
+     *
+     * @param releaseYear release year of the device
+     * @param devices list of values of the map-storage
+     * @return list of the Device objects with this release year
+     */
+    public List<Device> findByReleaseYear(int releaseYear, List<Device> devices) {
         List<Device> found = new ArrayList<>();
 
         Calendar patternDate = Calendar.getInstance();
         Calendar dateToCompare = Calendar.getInstance();
 
-        patternDate.set(Calendar.YEAR, desiredYear);
+        patternDate.set(Calendar.YEAR, releaseYear);
 
         for (Device device : devices) {
             Date date = device.getReleaseDate();

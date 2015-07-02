@@ -6,8 +6,19 @@ import java.util.*;
 
 /**
  * @author anna_mukhina
+ *
+ * Contains method for the search of the sales.
  */
 public class SaleSearcher extends SearcherByID<Sale> {
+    /**
+     * Searches for sales by year.
+     * Returns a list of the Sale objects with specified parameter.
+     * If there are no sales with this year returns an empty list.
+     *
+     * @param desiredYear year of the sale
+     * @param sales list of values of the map-storage
+     * @return list of the Sale objects with this year
+     */
     public List<Sale> findByYear(int desiredYear, List<Sale> sales) {
         List<Sale> found = new ArrayList<>();
 

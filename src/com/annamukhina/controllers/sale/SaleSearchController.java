@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author anna_mukhina
  *
- * Controller for sales search.
+ * Controller for search of the sales.
  */
 public class SaleSearchController {
     private final Sales sales; //storage
@@ -21,7 +21,7 @@ public class SaleSearchController {
     }
 
     /**
-     * Calls method for sales search by year from Model.
+     * Calls method for search of the sales by year from Model.
      * Returns list of the Sale objects with specified parameter.
      * If there are no sales with this year returns an empty list.
      *

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author anna_mukhina
  *
- * Controller for devices search.
+ * Controller for search of the devices.
  */
 public class DeviceSearchController {
     private final Devices devices; //storage
@@ -21,7 +21,7 @@ public class DeviceSearchController {
     }
 
     /**
-     * Calls method for device search by id from Model.
+     * Calls method for search of the devices by id from Model.
      * Returns a Device object with specified parameter or null, if this device
      * with this id doesn't exist.
      *
@@ -33,7 +33,7 @@ public class DeviceSearchController {
     }
 
     /**
-     * Calls method for devices search by brand from Model.
+     * Calls method for search of the devices by brand from Model.
      * Returns a list of the Device objects with specified parameter.
      * If there are no devices with this brand returns an empty list.
      *
@@ -45,7 +45,7 @@ public class DeviceSearchController {
     }
 
     /**
-     * Calls method for devices search by type from Model.
+     * Calls method for search of the devices by type from Model.
      * Returns a list of the Device objects with specified parameter.
      * If there are no devices with this type returns an empty list.
      *
@@ -57,7 +57,7 @@ public class DeviceSearchController {
     }
 
     /**
-     * Calls method for device search by release year from Model.
+     * Calls method for search of the devices by release year from Model.
      * Returns a list of the Device objects with specified parameter.
      * If there are no devices released in this year returns an empty list.
      *
