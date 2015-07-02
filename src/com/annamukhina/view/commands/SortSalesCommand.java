@@ -25,6 +25,7 @@ public class SortSalesCommand implements Command {
         this.salesSortingController = new SalesSortingController(sales);
 
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append("Выберите цифру, соответствующую параметру сортировки:\n");
         stringBuilder.append("1 - id, 2 - дата, 3 - количество позиций, 4 - клиент");
 

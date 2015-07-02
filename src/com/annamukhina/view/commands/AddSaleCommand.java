@@ -12,10 +12,8 @@ import com.annamukhina.model.storages.Sales;
 import com.annamukhina.view.Constants;
 import com.annamukhina.view.InputReader;
 import com.annamukhina.view.MainMenu;
-import com.annamukhina.view.exceptions.ClientNotFoundException;
-import com.annamukhina.view.exceptions.DeviceNotFoundException;
-import com.annamukhina.view.exceptions.ExitException;
-import com.annamukhina.view.exceptions.GoToMenuException;
+import com.annamukhina.view.exceptions.*;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +21,8 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author anna_mukhina
@@ -69,17 +69,20 @@ public class AddSaleCommand implements Command {
 
             System.out.println(Constants.orderInput);
 
-            Map<Device, Integer> order = readOrder();
+            Map<Device, Integer> order = getOrder();
 
-            saleAdditionController.addSale(client, order);
+            if(order.size() != 0) {
+                saleAdditionController.addSale(client, order);
 
-            System.out.println(Constants.saleAdditionSuccess);
+                System.out.println(Constants.saleAdditionSuccess);
+            }
+            else {
+                System.out.println(Constants.saleFail);
+            }
         } catch (GoToMenuException e) {
             MainMenu.showMenu();
         } catch (ExitException e) {
             MainMenu.setActive(false);
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (ClientNotFoundException cnfe) {
             System.out.println(Constants.clientNotFound);
 
@@ -89,37 +92,61 @@ public class AddSaleCommand implements Command {
         }
     }
 
-    private Map<Device, Integer> readOrder() throws IOException {
+    private Map<Device, Integer> getOrder() {
         Map<Device, Integer> order = new TreeMap<>(new DeviceIdComparator());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        Pattern linePattern = Pattern.compile("\\d+\\s\\d+");
+
+        try {
+            Pair<Device, Integer> item = readOrderLine(reader, linePattern);
+
+            while(item != null) {
+                order.put(item.getKey(), item.getValue());
+
+                item = readOrderLine(reader, linePattern);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WrongDataException e) {
+            System.out.println(Constants.orderFail);
+
+            return order;
+        }
+        return order;
+    }
+
+    private Pair<Device, Integer> readOrderLine(BufferedReader reader, Pattern pattern) throws IOException, WrongDataException {
         String input = reader.readLine();
 
-        while(!input.equals("-")) {
+        if(input.equals("-")) {
+            return null;
+        }
 
-            String[] position = input.split(" ");
+        Matcher matcher = pattern.matcher(input);
 
-            int deviceID = Integer.parseInt(position[0]);
+        boolean matches = matcher.matches();
 
+        if (!matches) {
+            throw new WrongDataException();
+        }
+
+        String[] position = input.split(" ");
+
+        int deviceID = Integer.parseInt(position[0]);
+
+        Device device = getDevice(deviceID);
+
+        if(device == null) {
+            return null;
+        }
+        else {
             int number = Integer.parseInt(position[1]);
 
-            try {
-                Device device = getDevice(deviceID);
-
-                order.put(device, number);
-
-                input = reader.readLine();
-
-            } catch (DeviceNotFoundException dnfe) {
-                System.out.println(Constants.deviceNotFound);
-
-                input = reader.readLine();
-            }
+            return new Pair<>(device, number);
         }
-        reader.close();
-
-        return order;
     }
 
     private Client getClient(int clientID) throws ClientNotFoundException {
@@ -132,10 +159,12 @@ public class AddSaleCommand implements Command {
         }
     }
 
-    private Device getDevice(int deviceID) throws DeviceNotFoundException {
+    private Device getDevice(int deviceID) {
         Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID);
         if(device == null) {
-            throw new DeviceNotFoundException();
+            System.out.println(Constants.deviceNotFound);
+
+            return null;
         }
         else {
             return device;

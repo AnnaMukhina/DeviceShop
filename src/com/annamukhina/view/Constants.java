@@ -50,9 +50,13 @@ public class Constants {
 
     public static final String FAIL = "Неверный ввод команды, попробуйте снова.";
 
+    public static final String saleFail = "Продажа не добавлена.";
+
+    public static final String orderFail = "Некорректные данные заказа.\nБудут добавлены только ранее введенные данные.";
+
     public static final String clientNotFound = "Клиент с таким id не существует. Внесите его в систему.";
 
-    public static final String deviceNotFound = "Девайс с таким id не существует.";
+    public static final String deviceNotFound = "Девайс с таким id не существует.\nБудут добавлены только ранее введенные данные.";
 
     public static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 

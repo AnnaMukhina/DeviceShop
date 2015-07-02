@@ -25,6 +25,7 @@ public class SortDevicesCommand implements Command {
         this.devicesSortingController = new DevicesSortingController(devices);
 
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append("Выберите цифру, соответствующую параметру сортировки:\n");
         stringBuilder.append("1 - id, 2 - марка, 3 - тип, 4 - цвет, 5 - дата выпуска, 6 - модель");
 

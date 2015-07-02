@@ -25,6 +25,7 @@ public class SortClientsCommand implements  Command {
         this.clientsSortingController = new ClientsSortingController(clients);
 
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append("Выберите цифру, соответствующую параметру сортировки:\n");
         stringBuilder.append("1 - id, 2 - фамилия, 3 - имя, 4 - отчество, 5 - год рождения");
 
