@@ -16,8 +16,8 @@ public class InputChecker {
     private static final Pattern stringPattern = Pattern.compile("[A-Za-zA-Яа-я' -]+");
     private static final Pattern modelPattern = Pattern.compile("\\w+");
     private static final Pattern yearPattern = Pattern.compile("[0-9]{4}");
-    private static final String EXIT = "EXIT";
-    private static final String MENU = "MENU";
+    private static final String EXIT = "exit";
+    private static final String MENU = "menu";
 
     public static void checkDate(String input) throws GoToMenuException, ExitException, ParseException {
         switch (input) {
