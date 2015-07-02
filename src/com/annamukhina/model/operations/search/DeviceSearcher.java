@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class DeviceSearcher extends SearcherByID<Device> {
     public List<Device> findByBrand(int brand, List<Device> devices) {
-        BrandOfDeviceEnum.Brands brands[] = BrandOfDeviceEnum.Brands.values();
+        BrandOfDeviceEnum.Brand brands[] = BrandOfDeviceEnum.Brand.values();
 
         List<Device> found = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public class DeviceSearcher extends SearcherByID<Device> {
     }
 
     public List<Device> findByType(int type, List<Device> devices) {
-        TypeOfDeviceEnum.Types types[] = TypeOfDeviceEnum.Types.values();
+        TypeOfDeviceEnum.Type types[] = TypeOfDeviceEnum.Type.values();
 
         List<Device> found = new ArrayList<>();
 

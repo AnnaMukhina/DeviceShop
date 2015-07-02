@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class SearchClientCommand implements Command {
     private final ClientSearchController clientSearchController;
     private final String clientSearchMenu;
+    private final int MAXCODE = 2;
     private String surname;
     private String name;
     private String middleName;
@@ -36,16 +37,16 @@ public class SearchClientCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int parameterOfSearch = InputReader.getCode(scanner, 2);
+            int parameterOfSearch = InputReader.getCode(scanner, MAXCODE);
 
-            switch (parameterOfSearch) {
-                case 1:
+            switch (Constants.codes[parameterOfSearch]) {
+                case ONE:
                     int clientID = InputReader.getCode(scanner, Constants.maxClientID);
 
                     clientSearchController.findByID(clientID);
 
                     break;
-                case 2:
+                case TWO:
                     System.out.println(Constants.surnameInput);
 
                     this.surname = InputReader.getString(scanner);

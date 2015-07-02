@@ -10,8 +10,8 @@ import java.util.Comparator;
  */
 public class TypeComparator implements Comparator<Device> {
     public int compare(Device device1, Device device2) {
-        TypeOfDeviceEnum.Types type1 = device1.getType();
-        TypeOfDeviceEnum.Types type2 = device2.getType();
+        TypeOfDeviceEnum.Type type1 = device1.getType();
+        TypeOfDeviceEnum.Type type2 = device2.getType();
 
         return type1.compareTo(type2);
     }

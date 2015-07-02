@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class SortDevicesCommand implements Command {
     private final DevicesSortingController devicesSortingController;
     private final String devicesSortingMenu;
+    private final int MAXCODE = 6;
     private List<Device> result;
 
     public SortDevicesCommand(Devices devices) {
@@ -37,25 +38,25 @@ public class SortDevicesCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int parameterOfSort = InputReader.getCode(scanner, 6);
+            int parameterOfSort = InputReader.getCode(scanner, MAXCODE);
 
-            switch (parameterOfSort) {
-                case 1:
+            switch (Constants.codes[parameterOfSort]) {
+                case ONE:
                     this.result = devicesSortingController.getSortedByID();
                     break;
-                case 2:
+                case TWO:
                     this.result = devicesSortingController.getSortedByBrand();
                     break;
-                case 3:
+                case THREE:
                     this.result = devicesSortingController.getSortedByType();
                     break;
-                case 4:
+                case FOUR:
                     this.result = devicesSortingController.getSortedByColor();
                     break;
-                case 5:
+                case FIVE:
                     this.result = devicesSortingController.getSortedByReleaseDate();
                     break;
-                case 6:
+                case SIX:
                     this.result = devicesSortingController.getSortedByModel();
                     break;
                 default:

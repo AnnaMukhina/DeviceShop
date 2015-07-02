@@ -22,31 +22,32 @@ public class CommandParser {
     }
 
     public void parseCommand(String command) {
+        command = command.toUpperCase();
         try {
-            switch (command) {
-                case "client":
+            switch (Constants.Command.valueOf(command)) {
+                case CLIENT:
                     AddClientCommand addClientCommand= new AddClientCommand(clients);
                     addClientCommand.execute();
                     break;
-                case "device":
+                case DEVICE:
                     AddDeviceCommand addDeviceCommand = new AddDeviceCommand(devices);
                     addDeviceCommand.execute();
                     break;
-                case "sale":
+                case SALE:
                     AddSaleCommand addSaleCommand = new AddSaleCommand(clients, devices, sales);
                     addSaleCommand.execute();
                     break;
-                case "search":
+                case SEARCH:
                     ShowSearchMenuCommand showSearchMenuCommand = new ShowSearchMenuCommand(clients, devices, sales);
                     showSearchMenuCommand.execute();
                     break;
-                case "sort":
+                case SORT:
                     ShowSortingMenuCommand showSortingMenuCommand = new ShowSortingMenuCommand(clients, devices, sales);
                     showSortingMenuCommand.execute();
                     break;
-                case "menu":
+                case MENU:
                     throw new GoToMenuException();
-                case "exit":
+                case EXIT:
                     throw new ExitException();
                 default:
                     System.out.println(Constants.fail);

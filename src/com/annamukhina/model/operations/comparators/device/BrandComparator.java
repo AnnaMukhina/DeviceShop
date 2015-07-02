@@ -10,8 +10,8 @@ import java.util.Comparator;
  */
 public class BrandComparator implements Comparator<Device> {
     public int compare(Device device1, Device device2) {
-        BrandOfDeviceEnum.Brands brand1 = device1.getBrand();
-        BrandOfDeviceEnum.Brands brand2 = device2.getBrand();
+        BrandOfDeviceEnum.Brand brand1 = device1.getBrand();
+        BrandOfDeviceEnum.Brand brand2 = device2.getBrand();
 
         return brand1.compareTo(brand2);
     }

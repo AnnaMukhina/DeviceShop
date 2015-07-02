@@ -4,7 +4,7 @@ package com.annamukhina.model.enums;
  * @author anna_mukhina
  */
 public class TypeOfDeviceEnum {
-    public enum Types {
+    public enum Type {
         NOTEBOOK, PHONE, PLAYER, TABLET;
 
         @Override
@@ -14,8 +14,8 @@ public class TypeOfDeviceEnum {
     }
 
     public static void printTypes() {
-        for (Types types : Types.values()) {
-            System.out.print(types.toString() + " ");
+        for (Type type : Type.values()) {
+            System.out.print(type.toString() + " ");
         }
         System.out.println();
     }

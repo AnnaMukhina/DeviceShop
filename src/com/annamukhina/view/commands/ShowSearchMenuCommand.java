@@ -45,20 +45,20 @@ public class ShowSearchMenuCommand implements Command {
         try {
             int code = InputReader.readNumber(scanner, MAXCODE);
 
-            switch (code) {
-                case 1:
+            switch (Constants.codes[code]) {
+                case ONE:
                     SearchClientCommand searchClientCommand = new SearchClientCommand(clients);
 
                     searchClientCommand.execute();
 
                     break;
-                case 2:
+                case TWO:
                     SearchDeviceCommand searchDeviceCommand = new SearchDeviceCommand(devices);
 
                     searchDeviceCommand.execute();
 
                     break;
-                case 3:
+                case THREE:
                     SearchSaleCommand searchSaleCommand = new SearchSaleCommand(sales);
 
                     searchSaleCommand.execute();

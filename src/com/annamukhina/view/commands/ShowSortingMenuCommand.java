@@ -45,20 +45,20 @@ public class ShowSortingMenuCommand {
         try {
             int code = InputReader.readNumber(scanner, MAXCODE);
 
-            switch (code) {
-                case 1:
+            switch (Constants.codes[code]) {
+                case ONE:
                     SortClientsCommand sortClientsCommand = new SortClientsCommand(clients);
 
                     sortClientsCommand.execute();
 
                     break;
-                case 2:
+                case TWO:
                     SortDevicesCommand sortDevicesCommand = new SortDevicesCommand(devices);
 
                     sortDevicesCommand.execute();
 
                     break;
-                case 3:
+                case THREE:
                     SortSalesCommand sortSalesCommand = new SortSalesCommand(sales);
 
                     sortSalesCommand.execute();

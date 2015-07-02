@@ -13,14 +13,14 @@ import java.util.Date;
 public class Device {
     public static int lastID = 0;
     private final int id;
-    private final BrandOfDeviceEnum.Brands brand;
+    private final BrandOfDeviceEnum.Brand brand;
     private final String model;
-    private final TypeOfDeviceEnum.Types type;
-    private final ColorOfDeviceEnum.Colors color;
+    private final TypeOfDeviceEnum.Type type;
+    private final ColorOfDeviceEnum.Color color;
     private Date releaseDate;
 
-    public Device(BrandOfDeviceEnum.Brands brand, String model, TypeOfDeviceEnum.Types type,
-                  ColorOfDeviceEnum.Colors color, Date releaseDate) {
+    public Device(BrandOfDeviceEnum.Brand brand, String model, TypeOfDeviceEnum.Type type,
+                  ColorOfDeviceEnum.Color color, Date releaseDate) {
         lastID++;
         this.id = lastID;
         this.brand = brand;
@@ -34,15 +34,15 @@ public class Device {
         return id;
     }
 
-    public BrandOfDeviceEnum.Brands getBrand() {
+    public BrandOfDeviceEnum.Brand getBrand() {
         return brand;
     }
 
-    public TypeOfDeviceEnum.Types getType() {
+    public TypeOfDeviceEnum.Type getType() {
         return type;
     }
 
-    public ColorOfDeviceEnum.Colors getColor() {
+    public ColorOfDeviceEnum.Color getColor() {
         return color;
     }
 

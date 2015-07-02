@@ -4,7 +4,7 @@ package com.annamukhina.model.enums;
  * @author anna_mukhina
  */
 public class BrandOfDeviceEnum {
-    public static enum Brands {
+    public static enum Brand {
         ACER, APPLE, ASUS, HTC, LG, SAMSUNG, SONY;
 
         @Override
@@ -14,8 +14,8 @@ public class BrandOfDeviceEnum {
     }
 
     public static void printBrands() {
-        for (Brands brands : Brands.values()) {
-            System.out.print(brands.toString() + " ");
+        for (Brand brand : Brand.values()) {
+            System.out.print(brand.toString() + " ");
         }
         System.out.println();
     }

@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class SearchDeviceCommand implements Command {
     private final DeviceSearchController deviceSearchController;
     private final String deviceSearchMenu;
+    private final int MAXCODE = 4;
     private int code;
     private int releaseYear;
 
@@ -39,9 +40,10 @@ public class SearchDeviceCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int parameterOfSearch = InputReader.getCode(scanner, 4);
-            switch (parameterOfSearch) {
-                case 1:
+            int parameterOfSearch = InputReader.getCode(scanner, MAXCODE);
+
+            switch (Constants.codes[parameterOfSearch]) {
+                case ONE:
                     System.out.println(Constants.deviceIdInput);
 
                     this.code = InputReader.getCode(scanner, Constants.maxDeviceID);
@@ -49,7 +51,7 @@ public class SearchDeviceCommand implements Command {
                     deviceSearchController.findByID(code);
 
                     break;
-                case 2:
+                case TWO:
                     System.out.println(Constants.brandInput);
 
                     BrandOfDeviceEnum.printBrands();
@@ -59,7 +61,7 @@ public class SearchDeviceCommand implements Command {
                     deviceSearchController.findByBrand(code);
 
                     break;
-                case 3:
+                case THREE:
                     System.out.println(Constants.typeInput);
 
                     TypeOfDeviceEnum.printTypes();
@@ -69,7 +71,7 @@ public class SearchDeviceCommand implements Command {
                     deviceSearchController.findByType(code);
 
                     break;
-                case 4:
+                case FOUR:
                     System.out.println(Constants.deviceReleaseYearInput);
 
                     this.releaseYear = InputReader.getYear(scanner);

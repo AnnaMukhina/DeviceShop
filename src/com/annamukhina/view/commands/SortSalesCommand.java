@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class SortSalesCommand implements Command {
     private final SalesSortingController salesSortingController;
     private final String salesSortingMenu;
+    private final int MAXCODE = 4;
     private List<Sale> result;
 
     public SortSalesCommand(Sales sales) {
@@ -37,16 +38,16 @@ public class SortSalesCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            int parameterOfSort = InputReader.getCode(scanner, 4);
+            int parameterOfSort = InputReader.getCode(scanner, MAXCODE);
 
-            switch (parameterOfSort) {
-                case 1:
+            switch (Constants.codes[parameterOfSort]) {
+                case ONE:
                     this.result = salesSortingController.getSortedByID(); break;
-                case 2:
+                case TWO:
                     this.result = salesSortingController.getSortedByDate(); break;
-                case 3:
+                case THREE:
                     this.result = salesSortingController.getSortedByOrderSize(); break;
-                case 4:
+                case FOUR:
                     this.result = salesSortingController.getSortedByClientID(); break;
                 default:
                     System.out.println(Constants.fail);

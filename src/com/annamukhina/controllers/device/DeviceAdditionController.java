@@ -13,23 +13,23 @@ import java.util.Date;
  */
 public class DeviceAdditionController {
     private final Devices devices;
-    private final BrandOfDeviceEnum.Brands brands[];
-    private final TypeOfDeviceEnum.Types types[];
-    private final ColorOfDeviceEnum.Colors colors[];
+    private final BrandOfDeviceEnum.Brand brands[];
+    private final TypeOfDeviceEnum.Type types[];
+    private final ColorOfDeviceEnum.Color colors[];
 
     public DeviceAdditionController(Devices devices) {
         this.devices = devices;
-        this.brands = BrandOfDeviceEnum.Brands.values();
-        this.types = TypeOfDeviceEnum.Types.values();
-        this.colors = ColorOfDeviceEnum.Colors.values();
+        this.brands = BrandOfDeviceEnum.Brand.values();
+        this.types = TypeOfDeviceEnum.Type.values();
+        this.colors = ColorOfDeviceEnum.Color.values();
     }
 
     public void addDevice(int codeOfBrand, String model, int codeOfType, int codeOfColor, Date releaseDate) {
-        BrandOfDeviceEnum.Brands brand = brands[codeOfBrand];
+        BrandOfDeviceEnum.Brand brand = brands[codeOfBrand];
 
-        TypeOfDeviceEnum.Types type = types[codeOfType];
+        TypeOfDeviceEnum.Type type = types[codeOfType];
 
-        ColorOfDeviceEnum.Colors color = colors[codeOfColor];
+        ColorOfDeviceEnum.Color color = colors[codeOfColor];
 
         Device newDevice = new Device(brand, model, type, color, releaseDate);
 

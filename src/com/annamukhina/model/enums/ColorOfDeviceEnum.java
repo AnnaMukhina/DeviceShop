@@ -4,7 +4,7 @@ package com.annamukhina.model.enums;
  * @author anna_mukhina
  */
 public class ColorOfDeviceEnum {
-    public enum Colors {
+    public enum Color {
         BLACK, BLUE, GREEN, RED, WHITE, YELLOW;
 
         @Override
@@ -14,8 +14,8 @@ public class ColorOfDeviceEnum {
     }
 
     public static void printColors() {
-        for (Colors colors : Colors.values()) {
-            System.out.print(colors.toString() + " ");
+        for (Color color : Color.values()) {
+            System.out.print(color.toString() + " ");
         }
         System.out.println();
     }

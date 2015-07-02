@@ -22,11 +22,11 @@ public class Constants {
 
     public static final String clientAdditionSuccess = "Клиент успешно внесен в систему.";
 
-    public static int maxCodeOfBrand = BrandOfDeviceEnum.Brands.values().length - 1;
+    public static int maxCodeOfBrand = BrandOfDeviceEnum.Brand.values().length - 1;
 
-    public static int maxCodeOfType = TypeOfDeviceEnum.Types.values().length - 1;
+    public static int maxCodeOfType = TypeOfDeviceEnum.Type.values().length - 1;
 
-    public static int maxCodeOfColor = ColorOfDeviceEnum.Colors.values().length - 1;
+    public static int maxCodeOfColor = ColorOfDeviceEnum.Color.values().length - 1;
 
     public static String brandInput = "Введите номер марки из списка, приведенного ниже:";
 
@@ -59,4 +59,16 @@ public class Constants {
     public static final int maxClientID = 1000000000;
 
     public static int maxDeviceID = 1000000000;
+
+    public enum Command {
+        CLIENT, DEVICE, EXIT, MENU, SALE, SEARCH, SORT
+    }
+
+    public enum Code {
+        ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE
+    }
+
+    public static Code[] codes = Code.values();
+
+    public static Command[] commands = Command.values();
 }
