@@ -1,4 +1,4 @@
-package com.annamukhina.model.operations.search;
+package com.annamukhina.model.operations;
 
 import com.annamukhina.model.entities.Device;
 import com.annamukhina.model.enums.BrandOfDeviceEnum;

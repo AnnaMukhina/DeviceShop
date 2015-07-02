@@ -1,7 +1,7 @@
 package com.annamukhina.controllers.client;
 
 import com.annamukhina.model.entities.Client;
-import com.annamukhina.model.operations.sorting.Sorter;
+import com.annamukhina.model.operations.Sorter;
 import com.annamukhina.model.operations.comparators.client.*;
 import com.annamukhina.model.storages.Clients;
 

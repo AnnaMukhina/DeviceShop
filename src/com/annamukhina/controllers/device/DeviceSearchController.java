@@ -1,7 +1,7 @@
 package com.annamukhina.controllers.device;
 
 import com.annamukhina.model.entities.Device;
-import com.annamukhina.model.operations.search.DeviceSearcher;
+import com.annamukhina.model.operations.DeviceSearcher;
 import com.annamukhina.model.storages.Devices;
 
 import java.util.List;

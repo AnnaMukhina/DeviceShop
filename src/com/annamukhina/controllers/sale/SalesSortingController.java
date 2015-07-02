@@ -2,7 +2,7 @@ package com.annamukhina.controllers.sale;
 
 import com.annamukhina.model.entities.Sale;
 import com.annamukhina.model.operations.comparators.sale.OrderSizeComparator;
-import com.annamukhina.model.operations.sorting.Sorter;
+import com.annamukhina.model.operations.Sorter;
 import com.annamukhina.model.operations.comparators.sale.ClientIdInSaleComparator;
 import com.annamukhina.model.operations.comparators.sale.DateComparator;
 import com.annamukhina.model.operations.comparators.sale.SaleIdComparator;

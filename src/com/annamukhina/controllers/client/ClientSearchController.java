@@ -1,7 +1,7 @@
 package com.annamukhina.controllers.client;
 
 import com.annamukhina.model.entities.Client;
-import com.annamukhina.model.operations.search.ClientSearcher;
+import com.annamukhina.model.operations.ClientSearcher;
 import com.annamukhina.model.storages.Clients;
 
 import java.util.List;

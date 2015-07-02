@@ -4,8 +4,8 @@ import com.annamukhina.controllers.sale.SaleAdditionController;
 import com.annamukhina.model.entities.Client;
 import com.annamukhina.model.entities.Device;
 import com.annamukhina.model.operations.comparators.device.DeviceIdComparator;
-import com.annamukhina.model.operations.search.ClientSearcher;
-import com.annamukhina.model.operations.search.DeviceSearcher;
+import com.annamukhina.model.operations.ClientSearcher;
+import com.annamukhina.model.operations.DeviceSearcher;
 import com.annamukhina.model.storages.Clients;
 import com.annamukhina.model.storages.Devices;
 import com.annamukhina.model.storages.Sales;
@@ -77,7 +77,7 @@ public class AddSaleCommand implements Command {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClientNotFoundException cnfe) {
-            System.out.println("Клиент с таким id не существует. Внесите его в систему.");
+            System.out.println(Constants.clientNotFound);
 
             AddClientCommand addClientCommand = new AddClientCommand(clients);
 
@@ -108,11 +108,13 @@ public class AddSaleCommand implements Command {
                 input = reader.readLine();
 
             } catch (DeviceNotFoundException dnfe) {
-                System.out.println("Девайс с таким id не существует.");
+                System.out.println(Constants.deviceNotFound);
 
                 input = reader.readLine();
             }
         }
+        reader.close();
+
         return order;
     }
 

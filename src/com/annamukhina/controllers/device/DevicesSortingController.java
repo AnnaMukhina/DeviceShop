@@ -1,7 +1,7 @@
 package com.annamukhina.controllers.device;
 
 import com.annamukhina.model.entities.Device;
-import com.annamukhina.model.operations.sorting.Sorter;
+import com.annamukhina.model.operations.Sorter;
 import com.annamukhina.model.operations.comparators.device.*;
 import com.annamukhina.model.storages.Devices;
 

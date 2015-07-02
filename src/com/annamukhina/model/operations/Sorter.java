@@ -1,4 +1,4 @@
-package com.annamukhina.model.operations.sorting;
+package com.annamukhina.model.operations;
 
 import java.util.Collections;
 import java.util.Comparator;

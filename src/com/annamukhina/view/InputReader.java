@@ -113,7 +113,7 @@ public class InputReader {
         String input = readString(scanner);
 
         while(input.equals("error")) {
-            input = readModel(scanner);
+            input = readString(scanner);
         }
         return input;
     }
