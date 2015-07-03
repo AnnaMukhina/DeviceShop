@@ -16,6 +16,9 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check,
+ * creates controller for the device addition and passes parameters of the device to it.
  */
 public class AddDeviceCommand implements Command {
     private final DeviceAdditionController deviceAdditionController;

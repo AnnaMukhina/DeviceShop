@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * @author anna_mukhina
+ *
+ * Prints list of found or sorted objects (clients, devices, sales).
  */
 public class PrintCommand<T> implements Command {
     private final List<T> objectToPrint;

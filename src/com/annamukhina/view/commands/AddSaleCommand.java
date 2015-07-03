@@ -26,6 +26,9 @@ import java.util.regex.Pattern;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check,
+ * creates controller for the sale addition and passes parameters of sale to it.
  */
 public class AddSaleCommand implements Command {
     private final Clients clients;
@@ -92,6 +95,12 @@ public class AddSaleCommand implements Command {
         }
     }
 
+    /**
+     * Creates client's order.
+     * If order doesn't contain items, prints message about it and doesn't add it to the system.
+     *
+     * @return map with list of the sold devices and their numbers
+     */
     private Map<Device, Integer> getOrder() {
         Map<Device, Integer> order = new TreeMap<>(new DeviceIdComparator());
 
@@ -118,6 +127,17 @@ public class AddSaleCommand implements Command {
         return order;
     }
 
+    /**
+     * Reads user item of the order input.
+     * If it isn't correct throws exception.
+     *
+     * @param reader BufferedReader of the System.in stream
+     * @param pattern pattern for item of the order input
+     * @return object of the sold device and number of this devices in the order
+     *         or null if id of the device is wrong
+     * @throws IOException if there are problems with BufferedReader
+     * @throws WrongDataException if item input isn't correct
+     */
     private Pair<Device, Integer> readOrderLine(BufferedReader reader, Pattern pattern) throws IOException, WrongDataException {
         String input = reader.readLine();
 
@@ -149,6 +169,13 @@ public class AddSaleCommand implements Command {
         }
     }
 
+    /**
+     * Returns client object if client's id is correct or throws exception.
+     *
+     * @param clientID client's id
+     * @return Client object
+     * @throws ClientNotFoundException if client's id is wrong
+     */
     private Client getClient(int clientID) throws ClientNotFoundException {
         Client client = clientSearcher.findByID(clients.getClientsMap(), clientID);
         if(client == null) {
@@ -159,6 +186,12 @@ public class AddSaleCommand implements Command {
         }
     }
 
+    /**
+     * Returns Device object if it's id is correct or null if it isn't.
+     *
+     * @param deviceID id of the device
+     * @return Device object
+     */
     private Device getDevice(int deviceID) {
         Device device = deviceSearcher.findByID(devices.getDeviceMap(), deviceID);
         if(device == null) {

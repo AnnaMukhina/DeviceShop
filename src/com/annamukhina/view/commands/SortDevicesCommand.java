@@ -14,6 +14,10 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check,
+ * creates controller for the sorting of devices,
+ * calls it's methods for sorting, calls Print command for the results of the sorting.
  */
 public class SortDevicesCommand implements Command {
     private final DevicesSortingController devicesSortingController;

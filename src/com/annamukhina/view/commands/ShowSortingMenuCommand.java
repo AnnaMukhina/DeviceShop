@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check, executes Sort commands.
  */
 public class ShowSortingMenuCommand implements Command {
     private final String sortingMenu;

@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check, executes Search commands.
  */
 public class ShowSearchMenuCommand implements Command {
     private final String searchMenu;

@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check,
+ * creates controller for the search of sales,
+ * calls it's methods for search, calls Print command for the results of the search.
  */
 public class SearchSaleCommand implements Command {
     private final SaleSearchController saleSearchController;

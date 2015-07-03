@@ -13,6 +13,9 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Calls methods for user input reading and check,
+ * creates controller for the client addition and passes client's parameters to it.
  */
 public class AddClientCommand implements Command {
     private final ClientAdditionController clientAdditionController;
