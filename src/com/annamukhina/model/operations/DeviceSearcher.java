@@ -82,4 +82,27 @@ public class DeviceSearcher extends SearcherByID<Device> {
         }
         return found;
     }
+
+    /**
+     * Method for tests.
+     * Searches for the devices by model.
+     * Returns a list of the Device objects with specified parameter.
+     * If there are no devices with this model returns an empty list.
+     *
+     * @param desiredModel model of the device
+     * @param devices list of values of the map-storage
+     * @return list of the Device objects with this model
+     */
+    public List<Device> findByModel(String desiredModel, List<Device> devices) {
+        List<Device> found = new ArrayList<>();
+
+        for(Device device : devices) {
+            String model = device.getModel();
+
+            if(model.equals(desiredModel)) {
+                found.add(device);
+            }
+        }
+        return found;
+    }
 }

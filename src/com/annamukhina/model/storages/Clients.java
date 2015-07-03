@@ -11,13 +11,13 @@ import java.util.TreeMap;
  * @author anna_mukhina
  */
 public class Clients {
-    private Map<Integer, Client> clients;
+    private Map<Integer, Client> clients; //storage
 
     public Clients() {
         clients = new TreeMap<>();
     }
 
-    public Map<Integer, Client> getClients() {
+    public Map<Integer, Client> getClientsMap() {
         return clients;
     }
 

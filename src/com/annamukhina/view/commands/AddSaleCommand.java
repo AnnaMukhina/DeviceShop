@@ -150,7 +150,7 @@ public class AddSaleCommand implements Command {
     }
 
     private Client getClient(int clientID) throws ClientNotFoundException {
-        Client client = clientSearcher.findByID(clients.getClients(), clientID);
+        Client client = clientSearcher.findByID(clients.getClientsMap(), clientID);
         if(client == null) {
             throw new ClientNotFoundException();
         }

@@ -20,7 +20,7 @@ public class ClientSearchController {
     public ClientSearchController(Clients clients) {
         this.clients = clients;
         this.clientSearcher = new ClientSearcher();
-        this.clientMap = clients.getClients();
+        this.clientMap = clients.getClientsMap();
     }
 
     /**
@@ -48,5 +48,19 @@ public class ClientSearchController {
      */
     public Client findByID(int id) {
         return clientSearcher.findByID(clientMap, id);
+    }
+
+    /**
+     * Method for tests.
+     * Calls method for search of the clients by year of birth from Model.
+     * Returns a Client object with specified parameter or null, if there are no clients born
+     * in this year.
+     * @param year year of birth
+     * @return list of the clients with this year of birth
+     */
+    public List<Client> findByYearOfBirth(int year) {
+        List<Client> clientsList = clients.getClientList();
+
+        return clientSearcher.findByYearOfBirth(year, clientsList);
     }
 }

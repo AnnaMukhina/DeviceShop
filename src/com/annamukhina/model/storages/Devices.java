@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * @author anna_mukhina
  */
 public class Devices {
-    private Map<Integer, Device> devices;
+    private Map<Integer, Device> devices; //storage
 
     public Devices() {
         devices = new TreeMap<>();

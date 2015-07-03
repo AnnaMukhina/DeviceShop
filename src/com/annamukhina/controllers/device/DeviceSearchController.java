@@ -67,4 +67,16 @@ public class DeviceSearchController {
     public List<Device> findByReleaseYear(int year) {
         return deviceSearcher.findByReleaseYear(year, devices.getDeviceList());
     }
+    /**
+     * Method for tests.
+     * Calls method for search of the devices by model from Model.
+     * Returns a list of the Device objects with specified parameter.
+     * If there are no devices with this model returns an empty list.
+     *
+     * @param model model of the device
+     * @return list of the devices with this model
+     */
+    public List<Device> findByModel(String model) {
+        return deviceSearcher.findByModel(model, devices.getDeviceList());
+    }
 }
