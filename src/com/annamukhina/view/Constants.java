@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 
 /**
  * @author anna_mukhina
+ *
+ * Contains template strings, constants and enums.
  */
 public class Constants {
     public static final String MESSAGE = "Введите команду:";

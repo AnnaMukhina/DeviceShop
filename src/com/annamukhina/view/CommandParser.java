@@ -9,6 +9,8 @@ import com.annamukhina.view.exceptions.GoToMenuException;
 
 /**
  * @author anna_mukhina
+ *
+ * Parses user command input.
  */
 public class CommandParser {
     private final Clients clients;
@@ -21,6 +23,12 @@ public class CommandParser {
         this.sales = sales;
     }
 
+    /**
+     * Calls methods for command execution.
+     * If user command input isn't correct prints a message about the error.
+     *
+     * @param command user command input
+     */
     public void parseCommand(String command) {
         command = command.toUpperCase();
         try {

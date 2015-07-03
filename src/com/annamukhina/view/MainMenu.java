@@ -5,7 +5,7 @@ package com.annamukhina.view;
  */
 public class MainMenu {
     private static String menu;
-    private static boolean active = true;
+    private static boolean active = true; //application works while is true
 
     public static void createMenu() {
         StringBuilder stringBuilder  = new StringBuilder();
@@ -24,6 +24,9 @@ public class MainMenu {
         menu = stringBuilder.toString();
     }
 
+    /**
+     * Shows main menu of the application.
+     */
     public static void showMenu() {
         System.out.println(menu);
     }

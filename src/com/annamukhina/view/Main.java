@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+        //creation of the storages
         Clients clients = new Clients();
         Devices devices = new Devices();
         Sales sales = new Sales();

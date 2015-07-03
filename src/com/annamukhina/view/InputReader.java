@@ -11,8 +11,19 @@ import java.util.Scanner;
 
 /**
  * @author anna_mukhina
+ *
+ * Contains methods for user input reading.
  */
 public class InputReader {
+    /**
+     * Reads user text string input. Calls method for the text validation.
+     * Returns input string if it's correct or "error" if it isn't.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return input string or "error"
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static String readString(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
@@ -26,6 +37,15 @@ public class InputReader {
         }
     }
 
+    /**
+     * Reads user date input. Calls method for the date validation.
+     * Returns input date if it's correct or null if it isn't.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return input date or null
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static Date readDate(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
@@ -39,6 +59,15 @@ public class InputReader {
         }
     }
 
+    /**
+     * Reads user model of the device input. Calls method for the model validation.
+     * Returns input model if it's correct or "error" if it isn't.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return input model or "error"
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static String readModel(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
@@ -52,6 +81,16 @@ public class InputReader {
         }
     }
 
+    /**
+     * Reads user number input. Calls method for the number validation.
+     * Returns input number if it's correct or -1 if it isn't.
+     *
+     * @param scanner scanner of the System.in stream
+     * @param maxNumber maximum permitted value for the input number
+     * @return input number or -1
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static int readNumber(Scanner scanner, int maxNumber) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
@@ -69,6 +108,15 @@ public class InputReader {
         }
     }
 
+    /**
+     * Reads user year input. Calls method for the year validation.
+     * Returns input year if it's correct or -1 if it isn't.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return input year or -1
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static int readYear(Scanner scanner) throws ExitException, GoToMenuException {
         String input = scanner.next();
         try {
@@ -82,6 +130,16 @@ public class InputReader {
         }
     }
 
+    /**
+     * Recursively calls method for user input reading and check until input is correct.
+     * Returns correct input number.
+     *
+     * @param scanner scanner of the System.in stream
+     * @param maxNumber maximum permitted value for the input number
+     * @return correct input number
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static int getCode(Scanner scanner, int maxNumber) throws ExitException, GoToMenuException {
         int code = readNumber(scanner, maxNumber);
 
@@ -91,6 +149,15 @@ public class InputReader {
         return code;
     }
 
+    /**
+     * Recursively calls method for user input reading and check until input is correct.
+     * Returns correct input date.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return correct input date
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static Date getDate(Scanner scanner) throws ExitException, GoToMenuException {
         Date date = readDate(scanner);
 
@@ -100,6 +167,15 @@ public class InputReader {
         return date;
     }
 
+    /**
+     * Recursively calls method for user input reading and check until input is correct.
+     * Returns correct input model of the device.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return correct input model of the device
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static String getModel(Scanner scanner) throws ExitException, GoToMenuException {
         String input = readModel(scanner);
 
@@ -109,6 +185,15 @@ public class InputReader {
         return input;
     }
 
+    /**
+     * Recursively calls method for user input reading and check until input is correct.
+     * Returns correct input string.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return correct input string
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public static String getString(Scanner scanner) throws ExitException, GoToMenuException {
         String input = readString(scanner);
 
@@ -118,6 +203,15 @@ public class InputReader {
         return input;
     }
 
+    /**
+     * Recursively calls method for user input reading and check until input is correct.
+     * Returns correct input year.
+     *
+     * @param scanner scanner of the System.in stream
+     * @return correct input year
+     * @throws ExitException if user input equals "exit" command
+     * @throws GoToMenuException if user input equals "menu" command
+     */
     public  static int getYear(Scanner scanner) throws ExitException, GoToMenuException {
         int input = readYear(scanner);
 
